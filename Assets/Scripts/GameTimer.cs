@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameTimer : MonoBehaviour
 {
     public UnityEvent Began;
+    public UnityEvent Timeout;
     public UnityEvent Stopped;
     public UnityEvent<float> RemainingTimeChanged;
     public UnityEvent DurationIncreased;
@@ -14,6 +16,7 @@ public class GameTimer : MonoBehaviour
     private void Awake()
     {
         Began = new UnityEvent();
+        Timeout = new UnityEvent();
         Stopped = new UnityEvent();
         RemainingTimeChanged = new UnityEvent<float>();
         DurationIncreased = new UnityEvent();
