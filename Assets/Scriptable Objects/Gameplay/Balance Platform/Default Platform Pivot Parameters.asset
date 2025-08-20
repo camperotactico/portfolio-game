@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DescendingSpeed: 12
   AscendingSpeed: 18
-  LowestHeight: -4
+  LowestHeight: -5
   HighestHeight: 0
