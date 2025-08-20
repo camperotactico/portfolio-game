@@ -1,11 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BalancePlatform : MonoBehaviour
 {
+    [Header("Parameters")]
+    [SerializeField]
+    private PlatformPivotParametes platformPivotParametes;
+
+
     [Header("Components")]
     [SerializeField]
     private Rigidbody2D platform;
@@ -15,15 +16,23 @@ public class BalancePlatform : MonoBehaviour
     private PlatformPivot rightPlatformPivot;
 
 
+
     private PlayerInputActions playerInputActions;
 
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
+    }
+
+    private void Start()
+    {
 
         leftPlatformPivot.SetInputAction(playerInputActions.Gameplay.LeftButton);
         rightPlatformPivot.SetInputAction(playerInputActions.Gameplay.RightButton);
+
+        leftPlatformPivot.SetParameters(platformPivotParametes);
+        rightPlatformPivot.SetParameters(platformPivotParametes);
     }
 
 
