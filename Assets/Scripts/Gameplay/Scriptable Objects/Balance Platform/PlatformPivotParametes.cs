@@ -5,6 +5,6 @@ public class PlatformPivotParametes : ScriptableObject
 {
     public float DescendingSpeed = 12.0f;
     public float AscendingSpeed = 18.0f;
-    public float LowestHeight = -4.0f;
-    public float HighestHeight = 0.0f;
+    public float Range = 4.0f;
+
 }
