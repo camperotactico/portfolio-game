@@ -49,6 +49,28 @@
                 },
                 {
                     "name": "",
+                    "id": "6f1bb11c-d043-45ff-85d7-85e6ceee9134",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26d545b2-5154-4ec8-a48d-760d69353975",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4c4a0e64-255f-4ca8-b762-114dafe4e66a",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -65,6 +87,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
+                    "action": "RightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfefe07c-42d7-45d4-9e6b-cb83bf221949",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08841649-d52a-4c37-9076-3706308a9424",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "RightButton",
                     "isComposite": false,
                     "isPartOfComposite": false
