@@ -15,3 +15,5 @@ Ever since, my abilities as a developer have improved, and I wanted to build a v
 ## Technical features
 
 - **Unit and integration tests**: Key parts of the codebase have been built following test driven development practices, and have been thoroughly tested using the built-in `Unity Test Framework`.
+
+- **Physics Interpolation**: Due to the nature of the game, a lot of physics interactions will take place at all times. These can be very taxing on mobile devices, so I changed the Physics engine update interval to run only 20 times per second against the default 50. The movement of physics based object is then interpolated to be displayed at the target FPS.
