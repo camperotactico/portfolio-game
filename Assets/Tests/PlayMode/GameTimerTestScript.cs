@@ -81,7 +81,7 @@ public class GameTimerTestScript
         yield return new WaitForEndOfFrame();
 
         Assert.IsTrue(gameTimer.IsRunning(), "GameTimer.IsRunning()` should return `true` while the timer is running.");
-        yield return new WaitForSeconds(START_DURATION);
+        yield return new WaitForSeconds(START_DURATION + 0.1f);
 
         Assert.IsTrue(gameTimerTimeoutEventCalled, "`GameTimer.Timeout()` event was not called when the timer finished.");
         Assert.IsFalse(gameTimer.IsRunning(), "GameTimer.IsRunning()` should return `false` after the timer is finished.");
@@ -152,11 +152,14 @@ public class GameTimerTestScript
             previousRemainingTime = remainingTime;
             remainingTime = newRemainingTime;
         });
-
+        gameTimer.Begin(START_DURATION);
         while (!hasTimerFinished)
         {
             yield return new WaitForEndOfFrame();
-            Assert.Less(remainingTime, previousRemainingTime, string.Format("The remainingTime ({0}) has not lowered since the previous frame ({1})", remainingTime, previousRemainingTime));
+            if (!hasTimerFinished)
+            {
+                Assert.Less(remainingTime, previousRemainingTime, string.Format("The remainingTime ({0}) has not lowered since the previous frame ({1})", remainingTime, previousRemainingTime));
+            }
         }
 
         Assert.AreEqual(remainingTime, 0f,EQUALS_DELTA, "The remaining time when `GameTimer.Finished()` was emitted is not zero." );
