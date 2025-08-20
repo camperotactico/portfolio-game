@@ -30,13 +30,14 @@ public class PlatformPivot : MonoBehaviour
     public void SetParameters(PlatformPivotParametes newPlatformPivotParametes)
     {
         platformPivotParameters = newPlatformPivotParametes;
-        globalLowestHeight = transform.TransformPoint(platformPivotParameters.Range * Vector3.down).y;
-        globalHighestHeight = transform.TransformPoint(Vector3.zero).y;
         RepositionLimits();
     }
 
     private void RepositionLimits()
     {
+        globalLowestHeight = transform.TransformPoint(platformPivotParameters.Range * Vector3.down).y;
+        globalHighestHeight = transform.TransformPoint(Vector3.zero).y;
+
         float pivotPointDiameter = pivotPointSpriteRenderer.size.y;
         float range = platformPivotParameters.Range;
 
