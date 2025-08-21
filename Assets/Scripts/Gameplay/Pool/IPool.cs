@@ -1,5 +1,5 @@
 ﻿public interface IPool<T>
 {
-    T RequestFromPool();
-    void ReleaseToPool(T t);
+    T RequestInstance();
+    void ReleaseInstance(T t);
 }

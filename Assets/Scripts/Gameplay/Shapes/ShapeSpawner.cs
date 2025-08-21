@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShapeSpawner : MonoBehaviour
@@ -26,7 +25,7 @@ public class ShapeSpawner : MonoBehaviour
     {
         while (true)
         {
-            Shape item = shapePool.RequestFromPool();
+            Shape item = shapePool.RequestInstance();
             Vector3 randomPosition = 3.0f * Random.insideUnitSphere;
             randomPosition.z = 0f;
             item.transform.localPosition = randomPosition;

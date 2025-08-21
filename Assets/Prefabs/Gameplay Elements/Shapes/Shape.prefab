@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4765568210303902701}
   - component: {fileID: 4245147225721041976}
   - component: {fileID: 3403360949956359489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5873193849704713566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &443492924140564697
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5880261c083d44e2b9335b74b26c3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shapeRigidbody2D: {fileID: 3403360949956359489}
+  shapesPitChecker: {fileID: 2062208621128306219}
 --- !u!212 &4765568210303902701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -161,3 +164,76 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1001 &297667218484270413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4033164375964228825}
+    m_Modifications:
+    - target: {fileID: 2496062039595974231, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_Name
+      value: Shapes Pit Checker
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+--- !u!114 &2062208621128306219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1783400243263527782, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+  m_PrefabInstance: {fileID: 297667218484270413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22440ff874dca4e18995229aafaa0a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &5873193849704713566 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6170002349069703187, guid: de28a6340c7a54de08b37189d920c16c, type: 3}
+  m_PrefabInstance: {fileID: 297667218484270413}
+  m_PrefabAsset: {fileID: 0}

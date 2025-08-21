@@ -6,25 +6,25 @@ public class Pool<T>: IPool<T> where T : MonoBehaviour, IPoolable<T>
     private const int DEFAULT_CAPACITY = 8;
     private const int MAX_SIZE = 32;
 
-    private T prefab;
+    private T instancePrefab;
     private Transform instancesParent;
     private IObjectPool<T> objectPool;
 
 
 
-    public Pool(T newPrefab, Transform newInstancesParent, int newDefaultCapacity = DEFAULT_CAPACITY, int newMaxSize = MAX_SIZE)
+    public Pool(T newInstancePrefab, Transform newInstancesParent, int newDefaultCapacity = DEFAULT_CAPACITY, int newMaxSize = MAX_SIZE)
     {
-        prefab = newPrefab;
+        instancePrefab = newInstancePrefab;
         instancesParent = newInstancesParent;
         objectPool = new ObjectPool<T>(OnCreate, OnRequest, OnRelease, OnDestroy, true, newDefaultCapacity, newMaxSize);
     }
 
-    public T RequestFromPool()
+    public T RequestInstance()
     {
         return objectPool.Get();
     }
 
-    public void ReleaseToPool(T t)
+    public void ReleaseInstance(T t)
     {
         objectPool.Release(t);
     }
@@ -32,9 +32,9 @@ public class Pool<T>: IPool<T> where T : MonoBehaviour, IPoolable<T>
 
     private T OnCreate()
     {
-        T instance = GameObject.Instantiate<T>(prefab);
+        T instance = GameObject.Instantiate<T>(instancePrefab);
         instance.transform.SetParent(instancesParent);
-        instance.Initialise(ReleaseToPool);
+        instance.Initialise(ReleaseInstance);
         return instance;
     }
 

@@ -16,4 +16,6 @@ Ever since, my abilities as a developer have improved, and I wanted to build a v
 
 - **Unit and integration tests**: Key parts of the codebase have been built following test driven development practices, and have been thoroughly tested using the built-in `Unity Test Framework`.
 
+- **Object Pooling**: During gameplay, many shapes constantly appear and disappear from the play area. The game makes use of object pooling to recycle instances of these shapes to reduce hiccups caused by memory allocation and garbage collection. It relies on `Unity3D`'s built-in pool system as it is thoroughly tested and flexible enough for the needs of this title.
+
 - **Physics Interpolation**: Due to the nature of the game, a lot of physics interactions will take place at all times. These can be very taxing on mobile devices, so I changed the Physics engine update interval to run only 20 times per second against the default 50. The movement of physics based object is then interpolated to be displayed at the target FPS.
