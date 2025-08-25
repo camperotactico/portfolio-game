@@ -515,6 +515,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4548423851321309587, guid: b78e74e5d6d654679a8e7fb5e5c0fa30, type: 3}
+      propertyPath: shapeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
+    - target: {fileID: 4548423851321309587, guid: b78e74e5d6d654679a8e7fb5e5c0fa30, type: 3}
+      propertyPath: shapeSpawnData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548423851321309587, guid: b78e74e5d6d654679a8e7fb5e5c0fa30, type: 3}
+      propertyPath: shapeSpawnData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 75d7ce319be0140e7948a1172faed8da, type: 2}
+    - target: {fileID: 4548423851321309587, guid: b78e74e5d6d654679a8e7fb5e5c0fa30, type: 3}
+      propertyPath: shapeSpawnData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}
     - target: {fileID: 8425861936337536023, guid: b78e74e5d6d654679a8e7fb5e5c0fa30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
