@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Constant Triangle Shape Spawn Datum 1
   m_EditorClassIdentifier: 
   shapeType: 2
-  shape: {fileID: 2928836403851621129, guid: 93d54bdd477cd4f0f953e42c62d0236c, type: 3}
-  SpawnTime: 0.5
+  SpawnTime: 1
+  SpawnCount: 4

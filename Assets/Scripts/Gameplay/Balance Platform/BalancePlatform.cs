@@ -31,8 +31,8 @@ public class BalancePlatform : MonoBehaviour
         leftPlatformPivot.SetInputAction(playerInputActions.Gameplay.LeftButton);
         rightPlatformPivot.SetInputAction(playerInputActions.Gameplay.RightButton);
 
-        leftPlatformPivot.SetParameters(platformPivotParametes);
-        rightPlatformPivot.SetParameters(platformPivotParametes);
+        leftPlatformPivot.SetParameters(platformPivotParametes,Vector3.left);
+        rightPlatformPivot.SetParameters(platformPivotParametes,Vector3.right);
     }
 
 

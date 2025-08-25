@@ -23,14 +23,13 @@ public class ShapeSpawner : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("TODO: Move shapeSpawnDatum.Shape to a scriptable object that holds a dictionary of ShapeType to ShapePrefab.");
         pendingShapeTypeToCountToSpawn = new Dictionary<ShapeType, int>();
         shapeTypeToShapePool = new Dictionary<ShapeType, IPool<Shape>>();
         shapeTypeToShapeSpawnStrategy = new Dictionary<ShapeType, IShapeSpawnStrategy>();
 
         foreach (BaseShapeSpawnDatum shapeSpawnDatum in shapeSpawnData)
         {
-            shapeTypeToShapePool[shapeSpawnDatum.ShapeType] = new Pool<Shape>(shapeSpawnDatum.Shape, shapesParent);
+            shapeTypeToShapePool[shapeSpawnDatum.ShapeType] = new Pool<Shape>(shapeData.GetShapePrefab(shapeSpawnDatum.ShapeType), shapesParent);
             shapeTypeToShapeSpawnStrategy[shapeSpawnDatum.ShapeType] = shapeSpawnDatum.GetShapeSpawnStrategyInstance(RequestSpawnOf);
         }
     }
@@ -70,6 +69,7 @@ public class ShapeSpawner : MonoBehaviour
             {
                 for (int i = 0; i < pendingShapeTypeToCountToSpawn[shapeType];i++)
                 {
+                    // Temporarely spawn shapes above the player.
                     Shape item = shapeTypeToShapePool[shapeType].RequestInstance();
                     Vector3 randomPosition = 3.0f * Random.insideUnitSphere;
                     randomPosition.z = 0f;
@@ -88,12 +88,12 @@ public class ShapeSpawner : MonoBehaviour
         }
     }
 
-    public void RequestSpawnOf(ShapeType shapeType)
+    public void RequestSpawnOf(ShapeType shapeType, int spawnCount)
     {
         if (!pendingShapeTypeToCountToSpawn.ContainsKey(shapeType))
         {
             pendingShapeTypeToCountToSpawn[shapeType] = 0;
         }
-        pendingShapeTypeToCountToSpawn[shapeType]++;
+        pendingShapeTypeToCountToSpawn[shapeType] += spawnCount;
     }
 }

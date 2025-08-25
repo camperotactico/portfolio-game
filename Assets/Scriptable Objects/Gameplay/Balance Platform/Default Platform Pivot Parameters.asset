@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c23338370c34ebfbc69e8d95af8a2a, type: 3}
   m_Name: Default Platform Pivot Parameters
   m_EditorClassIdentifier: 
-  DescendingSpeed: 12
+  DistanceFromCenter: 5
+  DescendingSpeed: 10
   AscendingSpeed: 18
-  Range: 3
+  Range: 3.5

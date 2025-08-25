@@ -27,14 +27,15 @@ public class PlatformPivot : MonoBehaviour
         nextPosition = pivotRigidbody2D.position;
     }
 
-    public void SetParameters(PlatformPivotParametes newPlatformPivotParametes)
+    public void SetParameters(PlatformPivotParametes newPlatformPivotParametes, Vector3 directionFromCenter)
     {
         platformPivotParameters = newPlatformPivotParametes;
-        RepositionLimits();
+        RepositionLimits(directionFromCenter);
     }
 
-    private void RepositionLimits()
+    private void RepositionLimits(Vector3 directionFromCenter)
     {
+        transform.localPosition = platformPivotParameters.DistanceFromCenter * directionFromCenter;
         globalLowestHeight = transform.TransformPoint(platformPivotParameters.Range * Vector3.down).y;
         globalHighestHeight = transform.TransformPoint(Vector3.zero).y;
 

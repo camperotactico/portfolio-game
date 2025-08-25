@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapesParent: {fileID: 8425861936337536023}
-  itemToSpawn: {fileID: 443492924140564697, guid: c49e4ed102de342439ad6c6e8f71e9fd, type: 3}
+  shapeSpawnData: []
+  shapeData: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
 --- !u!1 &4569330426087651413
 GameObject:
   m_ObjectHideFlags: 0
