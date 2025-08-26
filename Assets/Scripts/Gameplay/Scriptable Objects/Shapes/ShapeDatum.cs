@@ -1,9 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
-[Serializable]
-public struct ShapeDatum
+[CreateAssetMenu(fileName = "Shape Datum", menuName = "Gameplay/Shapes/Shape Datum", order = 0)]
+public class ShapeDatum : ScriptableObject
 {
-	public ShapeType Type;
-	public Shape Prefab;
+	public ShapeType ShapeType;
+	[Range(-1000,1000)]
+	public int Score;
 }
 

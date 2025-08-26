@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Constant Circle Shape Spawn Datum 1
   m_EditorClassIdentifier: 
   shapeType: 0
-  shape: {fileID: 443492924140564697, guid: c49e4ed102de342439ad6c6e8f71e9fd, type: 3}
-  SpawnFrequency: 0.1
+  SpawnTime: 0.1
+  SpawnCount: 1

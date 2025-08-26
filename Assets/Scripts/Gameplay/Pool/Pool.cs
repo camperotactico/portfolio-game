@@ -50,6 +50,7 @@ public class Pool<T>: IPool<T> where T : MonoBehaviour, IPoolable<T>
 
     private void OnDestroy(T instance)
     {
+        instance.CleanUp();
         GameObject.Destroy(instance.gameObject);
     }
 

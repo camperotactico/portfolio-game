@@ -16,21 +16,30 @@ public class ShapeSpawner : MonoBehaviour
 
     private IDictionary<ShapeType, int> pendingShapeTypeToCountToSpawn;
     private IDictionary<ShapeType, IPool<Shape>> shapeTypeToShapePool;
-    private IDictionary<ShapeType, IShapeSpawnStrategy> shapeTypeToShapeSpawnStrategy;
+    private IDictionary<ShapeType, ICollection<IShapeSpawnStrategy>> shapeTypeToShapeSpawnStrategy;
 
     private Coroutine spawningCoroutine;
 
 
     private void Awake()
     {
+        Application.targetFrameRate = 0;
         pendingShapeTypeToCountToSpawn = new Dictionary<ShapeType, int>();
         shapeTypeToShapePool = new Dictionary<ShapeType, IPool<Shape>>();
-        shapeTypeToShapeSpawnStrategy = new Dictionary<ShapeType, IShapeSpawnStrategy>();
+        shapeTypeToShapeSpawnStrategy = new Dictionary<ShapeType, ICollection<IShapeSpawnStrategy>>();
 
         foreach (BaseShapeSpawnDatum shapeSpawnDatum in shapeSpawnData)
         {
-            shapeTypeToShapePool[shapeSpawnDatum.ShapeType] = new Pool<Shape>(shapeData.GetShapePrefab(shapeSpawnDatum.ShapeType), shapesParent);
-            shapeTypeToShapeSpawnStrategy[shapeSpawnDatum.ShapeType] = shapeSpawnDatum.GetShapeSpawnStrategyInstance(RequestSpawnOf);
+            if (!shapeTypeToShapePool.ContainsKey(shapeSpawnDatum.ShapeType))
+            {
+                shapeTypeToShapePool[shapeSpawnDatum.ShapeType] = new Pool<Shape>(shapeData.GetShapePrefab(shapeSpawnDatum.ShapeType), shapesParent,32,128);
+            }
+
+            if (!shapeTypeToShapeSpawnStrategy.ContainsKey(shapeSpawnDatum.ShapeType))
+            {
+                shapeTypeToShapeSpawnStrategy[shapeSpawnDatum.ShapeType] = new List<IShapeSpawnStrategy>();
+            }
+            shapeTypeToShapeSpawnStrategy[shapeSpawnDatum.ShapeType].Add(shapeSpawnDatum.GetShapeSpawnStrategyInstance(RequestSpawnOf));
         }
     }
     private void Start()
@@ -71,7 +80,7 @@ public class ShapeSpawner : MonoBehaviour
                 {
                     // Temporarely spawn shapes above the player.
                     Shape item = shapeTypeToShapePool[shapeType].RequestInstance();
-                    Vector3 randomPosition = 3.0f * Random.insideUnitSphere;
+                    Vector3 randomPosition = 5.0f * Random.insideUnitSphere;
                     randomPosition.z = 0f;
                     item.transform.localPosition = randomPosition;
                 }
@@ -79,9 +88,12 @@ public class ShapeSpawner : MonoBehaviour
             pendingShapeTypeToCountToSpawn.Clear();
 
 
-            foreach (IShapeSpawnStrategy shapeSpawnStrategy in shapeTypeToShapeSpawnStrategy.Values)
+            foreach (ICollection<IShapeSpawnStrategy> shapeSpawnStrategies in shapeTypeToShapeSpawnStrategy.Values)
             {
-                shapeSpawnStrategy.Update(Time.fixedDeltaTime);
+                foreach(IShapeSpawnStrategy shapeSpawnStrategy in shapeSpawnStrategies)
+                {
+                    shapeSpawnStrategy.Update(Time.fixedDeltaTime);
+                }
             }
 
             yield return new WaitForFixedUpdate();
