@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3d63bb600214e44b45d5748218b313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topHalf: {fileID: 2272190613329147955}
+  bottomHalf: {fileID: 6752031214486299861}
 --- !u!1001 &2489442326309609096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +115,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 225952920174566586, guid: 15dd66c7f32084571bd043a8e631b024, type: 3}
   m_PrefabInstance: {fileID: 2489442326309609096}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &6752031214486299861 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 9167162831593781853, guid: 15dd66c7f32084571bd043a8e631b024, type: 3}
+  m_PrefabInstance: {fileID: 2489442326309609096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3685043173454722973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,7 +172,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shapes Goal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5363876243543866303, guid: ca6d0c73649d74503b5e2d849b3eeedb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -236,6 +244,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15dd66c7f32084571bd043a8e631b024, type: 3}
+--- !u!50 &2272190613329147955 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 9167162831593781853, guid: 15dd66c7f32084571bd043a8e631b024, type: 3}
+  m_PrefabInstance: {fileID: 6967138260233110126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7174939742168800980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 225952920174566586, guid: 15dd66c7f32084571bd043a8e631b024, type: 3}
