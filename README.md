@@ -24,6 +24,9 @@ Ever since, my abilities as a developer have improved, and I wanted to build a v
 
 > During a level, shapes can be spawned following different strategies: they can be spawn at a steady rate, spawned in bursts, spawned once a certain score is achieved... On top of that, each level in the game might feature a different combination of shapes and strategies.
 > To achieve this, the class uses:
->   - the `Component` pattern to handle different spawning strategies.
->   - `Factories` to instantiate strategies from serialised data.
->   - An `EventQueue` to aggregate and perform the spanwing operations.
+>
+> - the `Component` pattern to handle different spawning strategies.
+> - `Factories` to instantiate strategies from serialised data.
+> - An `EventQueue` to aggregate and perform the spanwing operations.
+
+- **Addressables and AssetBundles**: The game is designed to make use of Addressables to load new content (in the form of levels and skins) once the user launches the game.

@@ -1,27 +1,75 @@
 using System.Collections;
 using UnityEngine;
 
-public class WallMovementController
+public class WallMovementController: MonoBehaviour
 {
-    private Transform transform;
+    [SerializeField]
     private Rigidbody2D topHalf;
+    [SerializeField]
     private Rigidbody2D bottomHalf;
 
     private float currentVerticalPosition;
     private float currentGoalSize;
     private bool hasPositionChanged = false;
 
-    public WallMovementController(Transform newTransform, Rigidbody2D newTopHalf, Rigidbody2D newBottomHalf)
+    private Coroutine updateHalvesPositionCoroutine;
+    private Coroutine handleVerticalPositionCoroutine;
+    private Coroutine handleGoalSizeCoroutine;
+
+
+    private void Awake()
     {
-        transform = newTransform;
-        topHalf = newTopHalf;
-        bottomHalf = newBottomHalf;
         currentVerticalPosition = 0f;
         currentGoalSize = 0f;
         hasPositionChanged = true;
     }
 
-    public IEnumerator MoveTo(float newVerticalPosition, float duration = 0f)
+    public void StartMovement(ICommandProvider<IWallMovementCommand> verticalPositionCommandProvider, ICommandProvider<IWallMovementCommand> goalSizeCommandProvider )
+    {
+        TryStopCoroutines();
+
+        handleGoalSizeCoroutine = StartCoroutine(HandleWallMovementCommandProvider(goalSizeCommandProvider));
+        handleVerticalPositionCoroutine = StartCoroutine(HandleWallMovementCommandProvider(verticalPositionCommandProvider));
+        updateHalvesPositionCoroutine = StartCoroutine(UpdateHalvesPositions());
+    }
+
+    public void StopMovement()
+    {
+        TryStopCoroutines();
+    }
+
+    private void TryStopCoroutines()
+    {
+        if (updateHalvesPositionCoroutine != null)
+        {
+            StopCoroutine(updateHalvesPositionCoroutine);
+            updateHalvesPositionCoroutine = null;
+        }
+
+        if (handleGoalSizeCoroutine != null)
+        {
+            StopCoroutine(handleGoalSizeCoroutine);
+            handleGoalSizeCoroutine = null;
+        }
+
+        if (handleVerticalPositionCoroutine != null)
+        {
+            StopCoroutine(handleVerticalPositionCoroutine);
+            handleVerticalPositionCoroutine = null;
+        }
+    }
+
+    private IEnumerator HandleWallMovementCommandProvider(ICommandProvider<IWallMovementCommand> wallMovementCommandProvider)
+    {
+        while (wallMovementCommandProvider.TryGetNext(out IWallMovementCommand wallMovementCommand))
+        {
+            yield return wallMovementCommand.Execute(this);
+        }
+        yield return null;
+    }
+
+
+    public IEnumerator SetVerticalPosition(float newVerticalPosition, float duration = 0f)
     {
         float startVerticalPosition = currentVerticalPosition;
         float timer = 0f;
@@ -60,17 +108,21 @@ public class WallMovementController
 
     }
 
-    public void UpdateWallPosition()
+    private IEnumerator UpdateHalvesPositions()
     {
-        if (!hasPositionChanged)
+        while (true)
         {
-            return;
+            yield return new WaitForFixedUpdate();
+            if (!hasPositionChanged)
+            {
+                continue;
+            }
+            Vector2 tophalfPosition = transform.TransformPoint(0f, currentVerticalPosition + (0.5f * currentGoalSize), 0f);
+            Vector2 bottomHalfPosition = transform.TransformPoint(0f, currentVerticalPosition - (0.5f * currentGoalSize), 0f);
+            topHalf.MovePosition(tophalfPosition);
+            bottomHalf.MovePosition(bottomHalfPosition);
+            hasPositionChanged = false;
         }
 
-        Vector2 tophalfPosition = transform.TransformPoint(0f, currentVerticalPosition + (0.5f* currentGoalSize), 0f);
-        Vector2 bottomHalfPosition = transform.TransformPoint(0f, currentVerticalPosition - (0.5f* currentGoalSize), 0f);
-        topHalf.MovePosition(tophalfPosition);
-        bottomHalf.MovePosition(bottomHalfPosition);
-        hasPositionChanged = false;
     }
 }
