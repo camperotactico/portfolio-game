@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9282bb123e00a4c459cc7dc6c652042b, type: 3}
+  m_Name: Level Datum
+  m_EditorClassIdentifier: 
+  StartingTime: 30
+  CompletionScore: 400
+  ShapeSpawnData:
+  - {fileID: 11400000, guid: 75d7ce319be0140e7948a1172faed8da, type: 2}
+  - {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}
+  BalancePlatformParameters: {fileID: 11400000, guid: fceba0fea36b746bbbbdd5a601c4c1e6, type: 2}
+  LeftPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
+  RightPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
