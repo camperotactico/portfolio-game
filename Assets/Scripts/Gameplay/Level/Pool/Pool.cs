@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Pool;
 
-public class Pool<T>: IPool<T> where T : MonoBehaviour, IPoolable<T>
+public class Pool<T> : IPool<T> where T : MonoBehaviour, IPoolable<T>
 {
     private const int DEFAULT_CAPACITY = 8;
     private const int MAX_SIZE = 32;
@@ -27,6 +27,11 @@ public class Pool<T>: IPool<T> where T : MonoBehaviour, IPoolable<T>
     public void ReleaseInstance(T t)
     {
         objectPool.Release(t);
+    }
+
+    public void Clear()
+    {
+        objectPool.Clear();
     }
 
 

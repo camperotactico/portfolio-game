@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class ShapesGoal : MonoBehaviour
 {
-    public static Action<ShapesGoal, Shape> ShapeEntered;
+
+    [Header("Emitting Event Channels")]
+    [SerializeField]
+    private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
+
+    [Header("Runtime Sets")]
+    [SerializeField]
+    private ActiveShapesRuntimeSet activeShapesRuntimeSet;
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if (ActiveShapesCache.TryGetShape(collider2D.GetInstanceID(), out Shape shape))
+        if (activeShapesRuntimeSet.TryGetShape(collider2D.GetInstanceID(), out Shape shape))
         {
-            ShapeEntered?.Invoke(this, shape);
+            shapeLifecycleEventChannel.EmitEnteredGoal(shape, this);
             shape.ReleaseToPool();
         }
     }

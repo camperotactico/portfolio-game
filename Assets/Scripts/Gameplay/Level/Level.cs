@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Level : MonoBehaviour
 {
@@ -7,13 +6,9 @@ public class Level : MonoBehaviour
     [Header("Level Parameters")]
     public LevelDatum LevelDatum;
 
-    [Header("Game Events")]
+    [Header("Emitting Event Channels")]
     [SerializeField]
-    private UnityEvent<LevelDatum> InitialisationRequested;
-    [SerializeField]
-    private UnityEvent Started;
-    [SerializeField]
-    private UnityEvent Finished;
+    private LevelLifecycleEventChannel levelLifecycleEventChannel;
 
 
     public void Start()
@@ -21,7 +16,7 @@ public class Level : MonoBehaviour
         Debug.Log("TODO: Move this from here");
         Application.targetFrameRate = 0;
 
-        InitialisationRequested?.Invoke(LevelDatum);
-        Started?.Invoke();
+        levelLifecycleEventChannel.EmitInitialisationRequestedEvent(LevelDatum);
+        levelLifecycleEventChannel.EmitStartedEvent();
     }
 }

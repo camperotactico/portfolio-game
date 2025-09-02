@@ -5,6 +5,11 @@ public class Wall : MonoBehaviour
 {
     public const float WALL_DISTANCE_FROM_ORIGIN = 16f;
 
+
+    [Header("Receiving Event Channels")]
+    [SerializeField]
+    private LevelLifecycleEventChannel levelLifecycleEventChannel;
+
     private WallMovementController movementController;
 
     private ICommandProvider<IWallMovementCommand> verticalPositionCommandProvider;
@@ -15,20 +20,33 @@ public class Wall : MonoBehaviour
         movementController = GetComponent<WallMovementController>();
     }
 
-    public void OnLevelInitialisationRequested(LevelDatum levelDatum)
+    void OnEnable()
     {
-        SetParameters();
+        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+    }
+    void OnDisable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
     }
 
-    public void SetParameters()
+    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
         verticalPositionCommandProvider = new PingPongVerticalPositionCommandProvider(4.5f, 5f, transform.position.x > 0f);
         goalSizeCommandProvider = new RandomRangeGoalSizeCommandProvider(4f, 10f, 3f);
     }
 
-    public void OnLevelStarted()
+    private void OnLevelStarted()
     {
         movementController.StartMovement(verticalPositionCommandProvider, goalSizeCommandProvider);
+    }
+
+    private void OnLevelFinished()
+    {
+        movementController.StopMovement();
     }
 
 }

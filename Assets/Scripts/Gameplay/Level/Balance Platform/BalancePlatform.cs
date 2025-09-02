@@ -25,6 +25,9 @@ public class BalancePlatform : MonoBehaviour
     [SerializeField]
     private PlatformPivot rightPlatformPivot;
 
+    [Header("Receiving Event Channels")]
+    [SerializeField]
+    private LevelLifecycleEventChannel levelLifecycleEventChannel;
 
 
     private PlayerInputActions playerInputActions;
@@ -36,14 +39,22 @@ public class BalancePlatform : MonoBehaviour
         rightPlatformPivot.SetInputAction(playerInputActions.Gameplay.RightButton);
     }
 
-    public void OnLevelInitialisationRequested(LevelDatum levelDatum)
+    void OnEnable()
     {
-        SetParameters(levelDatum.BalancePlatformParameters, levelDatum.LeftPlatformPivotParameters, levelDatum.RightPlatformPivotParameters);
+        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+    }
+    void OnDisable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
     }
 
-    public void OnLevelStarted()
+    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
-        playerInputActions.Enable();
+        SetParameters(levelDatum.BalancePlatformParameters, levelDatum.LeftPlatformPivotParameters, levelDatum.RightPlatformPivotParameters);
     }
 
     public void SetParameters(BalancePlatformParameters newParameters, PlatformPivotParametes newLeftPlatformPivotParameters, PlatformPivotParametes newRightPlatformPivotParameters)
@@ -60,6 +71,16 @@ public class BalancePlatform : MonoBehaviour
         rightPlatformPivot.SetParameters(newRightPlatformPivotParameters, Vector3.right);
     }
 
+
+    private void OnLevelStarted()
+    {
+        playerInputActions.Enable();
+    }
+
+    private void OnLevelFinished()
+    {
+        playerInputActions.Disable();
+    }
 
     private void FixedUpdate()
     {

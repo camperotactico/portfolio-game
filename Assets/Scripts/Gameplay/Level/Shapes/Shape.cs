@@ -17,6 +17,10 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
     [SerializeField]
     private Collider2D shapeCollider2D;
 
+    [Header("Runtime Sets")]
+    [SerializeField]
+    private ActiveShapesRuntimeSet activeShapesRuntimeSet;
+
 
     private Action<Shape> releaseToPoolAction;
 
@@ -24,7 +28,7 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
     public void Initialise(Action<Shape> newReleaseToPoolAction)
     {
         releaseToPoolAction = newReleaseToPoolAction;
-        ActiveShapesCache.OnShapeSpawned(this);
+        activeShapesRuntimeSet.OnShapeSpawned(this);
     }
 
     public void ReleaseToPool()
@@ -37,7 +41,7 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
 
     public void CleanUp()
     {
-        ActiveShapesCache.OnShapeDestroyed(this);
+        activeShapesRuntimeSet.OnShapeDestroyed(this);
     }
 }
 

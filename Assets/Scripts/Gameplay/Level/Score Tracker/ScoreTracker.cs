@@ -9,26 +9,47 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     private ShapeData allShapeData;
 
+
+    [Header("Receiving Event Channels")]
+    [SerializeField]
+    private LevelLifecycleEventChannel levelLifecycleEventChannel;
+    [SerializeField]
+    private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
+
     private int currentScore;
 
 
-    public void OnLevelInitialisationRequested(LevelDatum levelDatum)
+    void OnEnable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+    }
+    void OnDisable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
+        shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
+    }
+
+    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
 
     }
 
-    public void OnLevelStarted()
+    private void OnLevelStarted()
     {
         currentScore = 0;
-        ShapesGoal.ShapeEntered += OnShapeEnteredGoal;
+        shapeLifecycleEventChannel.EnteredGoal.AddListener(OnShapeEnteredGoal);
     }
 
-    public void OnLevelFinished()
+    private void OnLevelFinished()
     {
-        ShapesGoal.ShapeEntered -= OnShapeEnteredGoal;
+        shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
     }
 
-    private void OnShapeEnteredGoal(ShapesGoal goal, Shape shape)
+    private void OnShapeEnteredGoal(Shape shape, ShapesGoal shapesGoal)
     {
         currentScore += shape.ShapeDatum.Score;
         CurrentScoreChanged?.Invoke(currentScore);

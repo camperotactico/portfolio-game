@@ -9,6 +9,9 @@ public class ShapeSpawner : MonoBehaviour
     [SerializeField]
     private ShapeData shapeData;
 
+    [Header("Receiving Event Channels")]
+    [SerializeField]
+    private LevelLifecycleEventChannel levelLifecycleEventChannel;
 
 
     private IDictionary<ShapeType, int> pendingShapeTypeToCountToSpawn;
@@ -25,7 +28,20 @@ public class ShapeSpawner : MonoBehaviour
         shapeTypeToShapeSpawnStrategy = new Dictionary<ShapeType, ICollection<IShapeSpawnStrategy>>();
     }
 
-    public void OnLevelInitialisationRequested(LevelDatum levelDatum)
+    void OnEnable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+    }
+    void OnDisable()
+    {
+        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
+        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
+    }
+
+    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
         foreach (BaseShapeSpawnDatum shapeSpawnDatum in levelDatum.ShapeSpawnData)
         {
@@ -42,12 +58,12 @@ public class ShapeSpawner : MonoBehaviour
         }
     }
 
-    public void OnLevelStarted()
+    private void OnLevelStarted()
     {
         StartSpawning();
     }
 
-    public void StartSpawning()
+    private void StartSpawning()
     {
         if (spawningCoroutine != null)
         {
@@ -56,7 +72,13 @@ public class ShapeSpawner : MonoBehaviour
         spawningCoroutine = StartCoroutine(HandleSpawning());
     }
 
-    public void StopSpawning()
+    private void OnLevelFinished()
+    {
+        StopSpawning();
+        CleanUp();
+    }
+
+    private void StopSpawning()
     {
         if (spawningCoroutine == null)
         {
@@ -65,7 +87,16 @@ public class ShapeSpawner : MonoBehaviour
         StopCoroutine(spawningCoroutine);
         spawningCoroutine = null;
 
+    }
+
+    private void CleanUp()
+    {
         pendingShapeTypeToCountToSpawn.Clear();
+        foreach (IPool<Shape> shapePool in shapeTypeToShapePool.Values)
+        {
+            shapePool.Clear();
+        }
+        shapeTypeToShapePool.Clear();
     }
 
 
