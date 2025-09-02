@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class LevelLifecycleEventChannel : ScriptableObject
 {
 
-    public UnityEvent<LevelDatum> InitialisationRequested;
-    public UnityEvent Started;
-    public UnityEvent Finished;
+    public UnityEvent<LevelDatum> InitialisationRequested = new UnityEvent<LevelDatum>();
+    public UnityEvent Started = new UnityEvent();
+    public UnityEvent Finished = new UnityEvent();
 
 
     public void EmitInitialisationRequestedEvent(LevelDatum levelDatum)

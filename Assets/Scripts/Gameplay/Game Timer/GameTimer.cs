@@ -1,28 +1,17 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameTimer : MonoBehaviour
 {
-    public UnityEvent Began;
-    public UnityEvent Timeout;
-    public UnityEvent Stopped;
-    public UnityEvent<float> RemainingTimeChanged;
-    public UnityEvent<float> DurationIncreased;
-    public UnityEvent<float> DurationDecreased;
+    public GameTimerEventChannel GameTimerEventChannel { get => gameTimerEventChannel; set => gameTimerEventChannel = value; }
+
+    [Header("Emitting Event Channels")]
+    [SerializeField]
+    private GameTimerEventChannel gameTimerEventChannel;
 
     private float remainingTime;
     private Coroutine runningTimerCoroutine;
 
-    private void Awake()
-    {
-        Began = new UnityEvent();
-        Timeout = new UnityEvent();
-        Stopped = new UnityEvent();
-        RemainingTimeChanged = new UnityEvent<float>();
-        DurationIncreased = new UnityEvent<float>();
-        DurationDecreased = new UnityEvent<float>();
-    }
 
     private void OnDestroy()
     {
@@ -35,7 +24,7 @@ public class GameTimer : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             remainingTime = Mathf.Max(0.0f, remainingTime - Time.deltaTime);
-            RemainingTimeChanged?.Invoke(remainingTime);
+            gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
         }
 
         OnTimeout();
@@ -46,8 +35,8 @@ public class GameTimer : MonoBehaviour
         StopCoroutine(runningTimerCoroutine);
         runningTimerCoroutine = null;
         remainingTime = 0.0f;
-        RemainingTimeChanged?.Invoke(remainingTime);
-        Timeout?.Invoke();
+        gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
+        gameTimerEventChannel.EmitTimeout();
     }
 
     public void Begin(float initialDuration)
@@ -58,11 +47,12 @@ public class GameTimer : MonoBehaviour
         }
         remainingTime = initialDuration;
         runningTimerCoroutine = StartCoroutine(RunTimer());
-        Began?.Invoke();
-        RemainingTimeChanged?.Invoke(remainingTime);
+        gameTimerEventChannel.EmitBegan();
+        gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
     }
 
-    public void Stop() {
+    public void Stop()
+    {
         if (!IsRunning())
         {
             return;
@@ -70,32 +60,34 @@ public class GameTimer : MonoBehaviour
         StopCoroutine(runningTimerCoroutine);
         runningTimerCoroutine = null;
         remainingTime = 0.0f;
-        Stopped?.Invoke();
-        RemainingTimeChanged?.Invoke(remainingTime);
+        gameTimerEventChannel.EmitStopped();
+        gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
     }
 
     public bool IsRunning() { return runningTimerCoroutine != null; }
 
-    public void IncreaseDuration(float durationIncrement) {
+    public void IncreaseDuration(float durationIncrement)
+    {
         if (!IsRunning())
         {
             return;
         }
         remainingTime += durationIncrement;
-        DurationIncreased?.Invoke(durationIncrement);
-        RemainingTimeChanged?.Invoke(remainingTime);
+        gameTimerEventChannel.EmitDurationIncreased(durationIncrement);
+        gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
     }
 
-    public void DecreaseDuration(float durationDecrement) {
+    public void DecreaseDuration(float durationDecrement)
+    {
         if (!IsRunning())
         {
             return;
         }
         remainingTime -= durationDecrement;
-        DurationDecreased?.Invoke(durationDecrement);
+        gameTimerEventChannel.EmitDurationDecreased(durationDecrement);
         if (remainingTime > 0.0)
         {
-            RemainingTimeChanged?.Invoke(remainingTime);
+            gameTimerEventChannel.EmitRemainingTimeChanged(remainingTime);
         }
         else
         {
