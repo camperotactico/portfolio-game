@@ -50,7 +50,7 @@ MonoBehaviour:
   shapeDatum: {fileID: 11400000, guid: 8c05ec1b8b353477982243115524405b, type: 2}
   shapeRigidbody2D: {fileID: 3403360949956359489}
   shapeCollider2D: {fileID: 4245147225721041976}
-  activeShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
+  spawnedShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
 --- !u!212 &4765568210303902701
 SpriteRenderer:
   m_ObjectHideFlags: 0

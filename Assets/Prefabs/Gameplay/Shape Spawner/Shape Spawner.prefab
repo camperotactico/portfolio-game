@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapesParent: {fileID: 8425861936337536023}
   shapeData: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
+  activeShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
   levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
 --- !u!1 &4569330426087651413
 GameObject:

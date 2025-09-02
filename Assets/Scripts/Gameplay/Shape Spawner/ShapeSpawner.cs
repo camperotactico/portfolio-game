@@ -9,6 +9,10 @@ public class ShapeSpawner : MonoBehaviour
     [SerializeField]
     private ShapeData shapeData;
 
+    [Header("Runtime Sets")]
+    [SerializeField]
+    private SpawnedShapesRuntimeSet spawnedShapesRuntimeSet;
+
     [Header("Receiving Event Channels")]
     [SerializeField]
     private LevelLifecycleEventChannel levelLifecycleEventChannel;
@@ -91,6 +95,13 @@ public class ShapeSpawner : MonoBehaviour
 
     private void CleanUp()
     {
+        ICollection<Shape> allActiveShapes = spawnedShapesRuntimeSet.GetActiveSpawnedShapes();
+        foreach (Shape activeShape in allActiveShapes)
+        {
+            activeShape.ReleaseToPool();
+        }
+
+
         pendingShapeTypeToCountToSpawn.Clear();
         foreach (IPool<Shape> shapePool in shapeTypeToShapePool.Values)
         {
