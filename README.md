@@ -1,4 +1,6 @@
-﻿## Balance Hero
+﻿> WIP This document is not finished and is being updated as new features are added.
+
+## Balance Hero
 
 In this small casual game, the objective is to achieve the highest score by getting different color shapes into the goals at the sides before running out of time.
 
@@ -9,8 +11,6 @@ This is a simple video game built using `Unity3D` that I am building to showcase
 The reason why I have decided to create this project is because the last relevant game on my `GitHub` profile was over three years old (right before I started my previous job).
 
 Ever since, my abilities as a developer have improved, and I wanted to build a vertical slice to reflect them, as I am not able to share any of the source code I worked on during my previous employment.
-
-> WIP This document is not finished and is being updated as new features are added.
 
 ## Technical features
 
