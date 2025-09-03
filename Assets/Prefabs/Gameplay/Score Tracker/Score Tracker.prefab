@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allShapeData: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
+  scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}
   levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
   shapeLifecycleEventChannel: {fileID: 11400000, guid: 7dbc906932ed644e29e48245444c8a0c, type: 2}

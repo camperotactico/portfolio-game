@@ -14,13 +14,15 @@ public class Level : MonoBehaviour
     [Header("Receiving Event Channels")]
     [SerializeField]
     private GameTimerEventChannel gameTimerEventChannel;
+    [SerializeField]
+    private ScoreTrackerEventChannel scoreTrackerEventChannel;
+
 
 
     public void Start()
     {
         Debug.Log("TODO: Move this from here");
         Application.targetFrameRate = 0;
-
 
         gameTimerEventChannel.Stopped.AddListener(OnGameTimerStoppedOrTimedOut);
         gameTimerEventChannel.Timeout.AddListener(OnGameTimerStoppedOrTimedOut);
@@ -34,6 +36,22 @@ public class Level : MonoBehaviour
         gameTimerEventChannel.Stopped.RemoveListener(OnGameTimerStoppedOrTimedOut);
         gameTimerEventChannel.Timeout.RemoveListener(OnGameTimerStoppedOrTimedOut);
 
+
+        scoreTrackerEventChannel.LevelScoringFinished.AddListener(OnLevelScoringFinished);
         levelLifecycleEventChannel.EmitFinishedEvent();
+    }
+
+    private void OnLevelScoringFinished(int finishScore)
+    {
+        scoreTrackerEventChannel.LevelScoringFinished.RemoveListener(OnLevelScoringFinished);
+
+        if (finishScore < LevelDatum.CompletionScore)
+        {
+            Debug.Log("Lost");
+        }
+        else
+        {
+            Debug.Log("Win");
+        }
     }
 }

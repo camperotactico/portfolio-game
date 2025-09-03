@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {
-    public static Action<int> CurrentScoreChanged;
-
     [Header("Components")]
     [SerializeField]
     private ShapeData allShapeData;
 
+    [Header("Emitting Event Channels")]
+    [SerializeField]
+    private ScoreTrackerEventChannel scoreTrackerEventChannel;
 
     [Header("Receiving Event Channels")]
     [SerializeField]
@@ -16,6 +17,7 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField]
     private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
 
+    private int completionScore;
     private int currentScore;
 
 
@@ -35,7 +37,8 @@ public class ScoreTracker : MonoBehaviour
 
     private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
-
+        completionScore = levelDatum.CompletionScore;
+        scoreTrackerEventChannel.EmitCompletionScoreChanged(completionScore);
     }
 
     private void OnLevelStarted()
@@ -47,12 +50,13 @@ public class ScoreTracker : MonoBehaviour
     private void OnLevelFinished()
     {
         shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
+        scoreTrackerEventChannel.EmitLevelScoringFinished(currentScore);
     }
 
     private void OnShapeEnteredGoal(Shape shape, ShapesGoal shapesGoal)
     {
         currentScore += shape.ShapeDatum.Score;
-        CurrentScoreChanged?.Invoke(currentScore);
+        scoreTrackerEventChannel.EmitCurrentScoreChanged(currentScore);
     }
 }
 
