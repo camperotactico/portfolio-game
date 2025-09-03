@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoadRequestRuntimeSet: {fileID: 11400000, guid: 879474e368c85435b90bfc0f6c0481aa, type: 2}
+  mainMenuSceneReference: {fileID: 11400000, guid: aa4f9a3dec80e4bfe94b57e55b4ab8ea, type: 2}
   levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
   gameTimerEventChannel: {fileID: 11400000, guid: 46c65fe79cbed46249b8d301236948bd, type: 2}
   scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282bb123e00a4c459cc7dc6c652042b, type: 3}
   m_Name: Level Datum 1
   m_EditorClassIdentifier: 
-  StartingTime: 80
+  StartingTime: 20
   CompletionScore: 400
   ShapeSpawnData:
   - {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}
-  BalancePlatformParameters: {fileID: 11400000, guid: fceba0fea36b746bbbbdd5a601c4c1e6, type: 2}
+  BalancePlatformParameters: {fileID: 11400000, guid: 17cec3af1fec242aebb5ad07d3e973e9, type: 2}
   LeftPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
-  RightPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
+  RightPlatformPivotParameters: {fileID: 11400000, guid: 4e85815e9801145bba4f4c1664dd8f3e, type: 2}

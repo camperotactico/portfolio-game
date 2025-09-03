@@ -1,11 +1,15 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
 
     [Header("Level Parameters")]
     public LevelLoadRequestRuntimeSet levelLoadRequestRuntimeSet;
+
+    [Header("Components")]
+    [SerializeField]
+    private SceneReference mainMenuSceneReference;
 
     [Header("Emitting Event Channels")]
     [SerializeField]
@@ -47,13 +51,18 @@ public class Level : MonoBehaviour
     {
         scoreTrackerEventChannel.LevelScoringFinished.RemoveListener(OnLevelScoringFinished);
 
+
+
+        Debug.Log("TODO: Replace this with actual victory and losing screens");
         if (finishScore < levelDatum.CompletionScore)
         {
-            Debug.Log("Lost");
+            // Lose
         }
         else
         {
-            Debug.Log("Win");
+            // Victory
         }
+
+        SceneManager.LoadScene(mainMenuSceneReference.BuildIndex);
     }
 }
