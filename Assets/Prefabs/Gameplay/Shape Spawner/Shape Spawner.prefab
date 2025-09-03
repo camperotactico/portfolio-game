@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapesParent: {fileID: 8425861936337536023}
   shapeData: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
-  activeShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
+  spawnedShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
   levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
 --- !u!1 &4569330426087651413
 GameObject:
@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 4569330426087651413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
