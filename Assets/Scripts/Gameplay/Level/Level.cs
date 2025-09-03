@@ -5,7 +5,7 @@ public class Level : MonoBehaviour
 {
 
     [Header("Level Parameters")]
-    public LevelDatum LevelDatum;
+    public LevelLoadRequestRuntimeSet levelLoadRequestRuntimeSet;
 
     [Header("Emitting Event Channels")]
     [SerializeField]
@@ -17,17 +17,19 @@ public class Level : MonoBehaviour
     [SerializeField]
     private ScoreTrackerEventChannel scoreTrackerEventChannel;
 
+    private LevelDatum levelDatum;
 
 
     public void Start()
     {
         Debug.Log("TODO: Move this from here");
         Application.targetFrameRate = 0;
+        levelDatum = levelLoadRequestRuntimeSet.LevelDatum;
 
         gameTimerEventChannel.Stopped.AddListener(OnGameTimerStoppedOrTimedOut);
         gameTimerEventChannel.Timeout.AddListener(OnGameTimerStoppedOrTimedOut);
 
-        levelLifecycleEventChannel.EmitInitialisationRequestedEvent(LevelDatum);
+        levelLifecycleEventChannel.EmitInitialisationRequestedEvent(levelDatum);
         levelLifecycleEventChannel.EmitStartedEvent();
     }
 
@@ -45,7 +47,7 @@ public class Level : MonoBehaviour
     {
         scoreTrackerEventChannel.LevelScoringFinished.RemoveListener(OnLevelScoringFinished);
 
-        if (finishScore < LevelDatum.CompletionScore)
+        if (finishScore < levelDatum.CompletionScore)
         {
             Debug.Log("Lost");
         }

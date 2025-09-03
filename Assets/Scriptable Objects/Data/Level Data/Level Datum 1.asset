@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282bb123e00a4c459cc7dc6c652042b, type: 3}
   m_Name: Level Datum 1
   m_EditorClassIdentifier: 
-  StartingTime: 30
+  StartingTime: 80
   CompletionScore: 400
   ShapeSpawnData:
   - {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}
