@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplaySceneReference: {fileID: 11400000, guid: e0e76a2e5cfe541e1bfface97298f64e, type: 2}
+  levelSelectionEventChannel: {fileID: 11400000, guid: 4b30a446a8b694de791f613d11b3dd55, type: 2}
   levelLoadRequestRuntimeSet: {fileID: 11400000, guid: 879474e368c85435b90bfc0f6c0481aa, type: 2}

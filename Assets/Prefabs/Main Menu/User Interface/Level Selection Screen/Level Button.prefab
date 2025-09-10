@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSelectionEventChannel: {fileID: 11400000, guid: 4b30a446a8b694de791f613d11b3dd55, type: 2}
+  levelNumberText: {fileID: 2955385286996915985}
 --- !u!222 &5430430398028225207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -179,11 +180,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9092727432313655328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: 0, y: 9}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8460281391092979860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -215,14 +216,14 @@ MonoBehaviour:
   m_text: Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e0252c38a69b846108f4a5f026bb4264, type: 2}
-  m_sharedMaterial: {fileID: -9057364030193069892, guid: e0252c38a69b846108f4a5f026bb4264, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: a702e9781a3c7404dbf831f46dedb262, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
