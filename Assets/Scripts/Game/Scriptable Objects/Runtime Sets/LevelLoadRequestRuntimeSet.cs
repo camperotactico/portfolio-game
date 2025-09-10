@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelLoadRequestRuntimeSet", menuName = "Scriptable Objects/Runtime Sets/LevelLoadRequestRuntimeSet")]
+[CreateAssetMenu(fileName = "LevelLoadRequestRuntimeSet", menuName = "Scriptable Objects/Runtime Sets/Level Load Request Runtime Set")]
 public class LevelLoadRequestRuntimeSet : ScriptableObject
 {
     public LevelDatum LevelDatum;
