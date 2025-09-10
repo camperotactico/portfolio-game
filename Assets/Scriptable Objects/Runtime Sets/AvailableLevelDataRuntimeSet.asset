@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78403b83f2a774f03b686963ce50d1dd, type: 3}
   m_Name: AvailableLevelDataRuntimeSet
   m_EditorClassIdentifier: 
+  AvailableLevelData: []

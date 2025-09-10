@@ -122,7 +122,7 @@ public class ShapeSpawner : MonoBehaviour
                 {
                     // Temporarely spawn shapes above the player.
                     Shape item = shapeTypeToShapePool[shapeType].RequestInstance();
-                    Vector3 randomPosition = 5.0f * Random.insideUnitSphere;
+                    Vector3 randomPosition = 2.5f * Random.insideUnitSphere;
                     randomPosition.z = 0f;
                     item.transform.localPosition = randomPosition;
                 }

@@ -4,10 +4,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "LevelSelectionEventChannel", menuName = "Scriptable Objects/Event Channels/Level Selection Event Channel")]
 public class LevelSelectionEventChannel : ScriptableObject
 {
-    public UnityEvent<int> LevelButtonPressed = new UnityEvent<int>();
+    public UnityEvent<LevelDatum> LevelButtonPressed = new UnityEvent<LevelDatum>();
 
-    public void EmitLevelButtonPressed(int levelNumber)
+    public void EmitLevelButtonPressed(LevelDatum levelDatum)
     {
-        LevelButtonPressed?.Invoke(levelNumber);
+        LevelButtonPressed?.Invoke(levelDatum);
     }
 }

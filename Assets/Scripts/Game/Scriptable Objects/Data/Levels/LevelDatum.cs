@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelDatum : ScriptableObject
 {
     [Header("Level Parameters")]
+    [Range(1, 99999)]
+    public int ID = 1;
     [Range(5, 180)]
     public int StartingTime = 30;
     public int CompletionScore = 400;

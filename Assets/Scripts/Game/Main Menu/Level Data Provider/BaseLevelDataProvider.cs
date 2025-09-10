@@ -13,6 +13,11 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
 
     private Coroutine loadLevelDataCoroutine;
 
+    void Awake()
+    {
+        availableLevelDataRuntimeSet.AvailableLevelData.Clear();
+    }
+
     void OnEnable()
     {
         levelDataAvailabilityEventChannel.LevelDataRequested.AddListener(OnLeveDataRequested);
