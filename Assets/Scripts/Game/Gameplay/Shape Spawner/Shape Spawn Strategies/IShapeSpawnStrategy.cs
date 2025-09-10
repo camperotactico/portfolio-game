@@ -2,7 +2,7 @@
 
 public interface IShapeSpawnStrategy
 {
-    void SetRequestSpawnAction(Action<ShapeType,int> requestSpawnAction);
+    void SetRequestSpawnAction(Action<ShapeDatum, int> requestSpawnAction);
     void Update(float deltaTime);
 }
 

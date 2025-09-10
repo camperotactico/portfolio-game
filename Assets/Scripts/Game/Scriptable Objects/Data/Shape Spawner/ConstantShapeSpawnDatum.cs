@@ -10,10 +10,10 @@ public class ConstantShapeSpawnDatum : BaseShapeSpawnDatum
     [Range(1, 10)]
     public int SpawnCount = 1;
 
-    public override IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeType, int> requestShapeTypeSpawnAction)
+    public override IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeDatum, int> requestShapeDatumSpawnAction)
     {
         IShapeSpawnStrategy shapeSpawnStrategy = new ConstantShapeSpawnStrategy(this);
-        shapeSpawnStrategy.SetRequestSpawnAction(requestShapeTypeSpawnAction);
+        shapeSpawnStrategy.SetRequestSpawnAction(requestShapeDatumSpawnAction);
         return shapeSpawnStrategy;
     }
 }

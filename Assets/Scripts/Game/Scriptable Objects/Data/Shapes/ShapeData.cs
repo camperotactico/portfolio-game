@@ -8,44 +8,25 @@ public class ShapeData : ScriptableObject
     [SerializeField]
     public Shape[] allShapePrefabs;
 
-    private IDictionary<ShapeType, ShapeDatum> shapeTypeToShapeDatum;
-    private IDictionary<ShapeType, Shape> shapeTypeToShapePrefab;
+    private IDictionary<ShapeDatum, Shape> shapeDatumToShapePrefab;
 
-    internal ShapeDatum GetShapeDatum(ShapeType shapeType)
+    internal Shape GetShapePrefab(ShapeDatum shapeDatum)
     {
-        return LazilyGetShapeTypeToShapeDatum()[shapeType];
+        return LazilyGetShapeDatumToShapePrefab()[shapeDatum];
     }
 
-    private IDictionary<ShapeType, ShapeDatum> LazilyGetShapeTypeToShapeDatum()
+
+    private IDictionary<ShapeDatum, Shape> LazilyGetShapeDatumToShapePrefab()
     {
-        if (shapeTypeToShapeDatum == null)
+        if (shapeDatumToShapePrefab == null)
         {
-            shapeTypeToShapeDatum = new Dictionary<ShapeType, ShapeDatum>();
+            shapeDatumToShapePrefab = new Dictionary<ShapeDatum, Shape>();
             foreach (Shape shapePrefab in allShapePrefabs)
             {
-                shapeTypeToShapeDatum[shapePrefab.ShapeDatum.ShapeType] = shapePrefab.ShapeDatum;
+                shapeDatumToShapePrefab[shapePrefab.ShapeDatum] = shapePrefab;
             }
         }
-        return shapeTypeToShapeDatum;
-    }
-
-    internal Shape GetShapePrefab(ShapeType shapeType)
-    {
-        return LazilyGetShapeTypeToShapePrefab()[shapeType];
-    }
-
-
-    private IDictionary<ShapeType, Shape> LazilyGetShapeTypeToShapePrefab()
-    {
-        if (shapeTypeToShapePrefab == null)
-        {
-            shapeTypeToShapePrefab = new Dictionary<ShapeType, Shape>();
-            foreach (Shape shapePrefab in allShapePrefabs)
-            {
-                shapeTypeToShapePrefab[shapePrefab.ShapeDatum.ShapeType] = shapePrefab;
-            }
-        }
-        return shapeTypeToShapePrefab;
+        return shapeDatumToShapePrefab;
     }
 }
 

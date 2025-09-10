@@ -5,10 +5,10 @@ public abstract class BaseShapeSpawnDatum : ScriptableObject, IShapeSpawnDatum
 {
     [Header("Shape Parameters")]
     [SerializeField]
-    private ShapeType shapeType;
+    private ShapeDatum shapeDatum;
 
-    public ShapeType ShapeType => shapeType;
+    public ShapeDatum ShapeDatum => shapeDatum;
 
-    public abstract IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeType,int> requestShapeTypeSpawnAction);
+    public abstract IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeDatum, int> requestShapeDatumSpawnAction);
 }
 

@@ -1,25 +1,24 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 
-public class ConstantShapeSpawnStrategy: IShapeSpawnStrategy
+public class ConstantShapeSpawnStrategy : IShapeSpawnStrategy
 {
     private float spawnTime;
     private int spawnCount;
 
     private float remainingTime;
 
-    private ShapeType shapeType;
-    private Action<ShapeType,int> requestShapeSpawnAction;
+    private ShapeDatum shapeDatum;
+    private Action<ShapeDatum, int> requestShapeSpawnAction;
 
-    public  ConstantShapeSpawnStrategy(ConstantShapeSpawnDatum constantShapeSpawnDatum)
+    public ConstantShapeSpawnStrategy(ConstantShapeSpawnDatum constantShapeSpawnDatum)
     {
-        shapeType = constantShapeSpawnDatum.ShapeType;
+        shapeDatum = constantShapeSpawnDatum.ShapeDatum;
         spawnTime = constantShapeSpawnDatum.SpawnTime;
         spawnCount = constantShapeSpawnDatum.SpawnCount;
         remainingTime = spawnTime;
     }
 
-    public void SetRequestSpawnAction(Action<ShapeType,int> newRequestShapeSpawnAction)
+    public void SetRequestSpawnAction(Action<ShapeDatum, int> newRequestShapeSpawnAction)
     {
         requestShapeSpawnAction = newRequestShapeSpawnAction;
     }
@@ -29,7 +28,7 @@ public class ConstantShapeSpawnStrategy: IShapeSpawnStrategy
         remainingTime -= deltaTime;
         if (remainingTime <= 0f)
         {
-            requestShapeSpawnAction?.Invoke(shapeType,spawnCount);
+            requestShapeSpawnAction?.Invoke(shapeDatum, spawnCount);
             remainingTime += spawnTime;
         }
     }

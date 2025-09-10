@@ -2,7 +2,7 @@
 
 public interface IShapeSpawnDatum
 {
-	public ShapeType ShapeType { get; }
-    public IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeType,int> requestShapeTypeSpawnAction);
+    public ShapeDatum ShapeDatum { get; }
+    public IShapeSpawnStrategy GetShapeSpawnStrategyInstance(Action<ShapeDatum, int> requestShapeDatumSpawnAction);
 }
 
