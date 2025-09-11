@@ -20,3 +20,7 @@ MonoBehaviour:
   BalancePlatformParameters: {fileID: 11400000, guid: 17cec3af1fec242aebb5ad07d3e973e9, type: 2}
   LeftPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
   RightPlatformPivotParameters: {fileID: 11400000, guid: 4e85815e9801145bba4f4c1664dd8f3e, type: 2}
+  LeftWallVerticalPositionParameters: {fileID: 11400000, guid: 3f51b1a4eaf1548918ecdf15b0746c02, type: 2}
+  LeftWallGoalSizeParameters: {fileID: 11400000, guid: 7fc3452fb69eb4e2f95d57ef9c7296fb, type: 2}
+  RightWallVerticalPositionParameters: {fileID: 11400000, guid: aa46c0deb5d7a48f9a02b0e0416e7e29, type: 2}
+  RightWallGoalSizeParameters: {fileID: 11400000, guid: 7fc3452fb69eb4e2f95d57ef9c7296fb, type: 2}

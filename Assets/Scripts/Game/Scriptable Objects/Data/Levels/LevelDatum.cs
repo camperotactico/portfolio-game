@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level Datum", menuName = "Scriptable Objects/Gameplay/Levels/Level Datum", order = 0)]
+[CreateAssetMenu(fileName = "Level Datum", menuName = "Scriptable Objects/Data/Levels/Level Datum", order = 0)]
 public class LevelDatum : ScriptableObject
 {
     [Header("Level Parameters")]
@@ -19,5 +19,11 @@ public class LevelDatum : ScriptableObject
     public PlatformPivotParametes LeftPlatformPivotParameters;
     public PlatformPivotParametes RightPlatformPivotParameters;
 
-    // TODO: Figure out how to best expose wall command providers
+    [Header("Left Wall Movement Parameters")]
+    public BaseVerticalPositionCommandProviderParameters LeftWallVerticalPositionParameters;
+    public BaseGoalSizeCommandProviderParameters LeftWallGoalSizeParameters;
+
+    [Header("Right Wall Movement Parameters")]
+    public BaseVerticalPositionCommandProviderParameters RightWallVerticalPositionParameters;
+    public BaseGoalSizeCommandProviderParameters RightWallGoalSizeParameters;
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BalancePlatformParameters", menuName = "Scriptable Objects/Gameplay/Balance Platform/Balance Platform Parameters")]
+[CreateAssetMenu(fileName = "BalancePlatformParameters", menuName = "Scriptable Objects/Data/Balance Platform/Balance Platform Parameters")]
 public class BalancePlatformParameters : ScriptableObject
 {
     [Range(4f, 18f)]

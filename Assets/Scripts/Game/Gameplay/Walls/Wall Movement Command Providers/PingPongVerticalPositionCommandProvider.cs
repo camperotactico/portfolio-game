@@ -1,16 +1,15 @@
 ﻿public class PingPongVerticalPositionCommandProvider : ICommandProvider<IWallMovementCommand>
 {
-
     private float amplitude;
     private float duration;
     private bool isGoingUp;
 
-	public PingPongVerticalPositionCommandProvider(float newAmplitude, float newDuration, bool newIsGoingUp)
-	{
-        amplitude = newAmplitude;
-        duration = newDuration;
-        isGoingUp = newIsGoingUp;
-	}
+    public PingPongVerticalPositionCommandProvider(PingPongVerticalPositionCommnadProviderParameters parameters)
+    {
+        amplitude = parameters.Amplitude;
+        duration = parameters.Duration;
+        isGoingUp = parameters.StartsGoingUp;
+    }
 
     public bool TryGetNext(out IWallMovementCommand nextCommand)
     {

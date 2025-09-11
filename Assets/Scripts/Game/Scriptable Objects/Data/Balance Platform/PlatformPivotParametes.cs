@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlatformPivotParameters", menuName = "Scriptable Objects/Gameplay/Balance Platform/Platform Pivot Parameters", order = 0)]
+[CreateAssetMenu(fileName = "PlatformPivotParameters", menuName = "Scriptable Objects/Data/Balance Platform/Platform Pivot Parameters", order = 0)]
 public class PlatformPivotParametes : ScriptableObject
 {
     public float DistanceFromCenter = 4.5f;

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(WallMovementController))]
-public class Wall : MonoBehaviour
+public class WallsController : MonoBehaviour
 {
     public const float WALL_DISTANCE_FROM_ORIGIN = 16f;
 
@@ -10,15 +9,14 @@ public class Wall : MonoBehaviour
     [SerializeField]
     private LevelLifecycleEventChannel levelLifecycleEventChannel;
 
-    private WallMovementController movementController;
+    [Header("Components")]
+    [SerializeField]
+    private WallMovementController leftWallMovementController;
+    [SerializeField]
+    private WallMovementController rightWallMovementController;
 
-    private ICommandProvider<IWallMovementCommand> verticalPositionCommandProvider;
-    private ICommandProvider<IWallMovementCommand> goalSizeCommandProvider;
+    private LevelDatum levelDatum;
 
-    void Awake()
-    {
-        movementController = GetComponent<WallMovementController>();
-    }
 
     void OnEnable()
     {
@@ -33,20 +31,21 @@ public class Wall : MonoBehaviour
         levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
     }
 
-    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
+    private void OnLevelInitialisationRequested(LevelDatum newLevelDatum)
     {
-        verticalPositionCommandProvider = new PingPongVerticalPositionCommandProvider(4.5f, 5f, transform.position.x > 0f);
-        goalSizeCommandProvider = new RandomRangeGoalSizeCommandProvider(4f, 10f, 3f);
+        levelDatum = newLevelDatum;
     }
 
     private void OnLevelStarted()
     {
-        movementController.StartMovement(verticalPositionCommandProvider, goalSizeCommandProvider);
+        leftWallMovementController.StartMovement(levelDatum.LeftWallVerticalPositionParameters.GetCommandProviderInstance(), levelDatum.LeftWallGoalSizeParameters.GetCommandProviderInstance());
+        rightWallMovementController.StartMovement(levelDatum.RightWallVerticalPositionParameters.GetCommandProviderInstance(), levelDatum.RightWallGoalSizeParameters.GetCommandProviderInstance());
     }
 
     private void OnLevelFinished()
     {
-        movementController.StopMovement();
+        leftWallMovementController.StopMovement();
+        rightWallMovementController.StopMovement();
     }
 
 }

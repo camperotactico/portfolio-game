@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9282bb123e00a4c459cc7dc6c652042b, type: 3}
   m_Name: Level Datum 1
   m_EditorClassIdentifier: 
+  ID: 1
   StartingTime: 30
   CompletionScore: 200
   ShapeSpawnData:
@@ -20,3 +21,7 @@ MonoBehaviour:
   BalancePlatformParameters: {fileID: 11400000, guid: fceba0fea36b746bbbbdd5a601c4c1e6, type: 2}
   LeftPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
   RightPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
+  LeftWallVerticalPositionParameters: {fileID: 11400000, guid: 7921fb9c1fa804d29b0795e769f055a9, type: 2}
+  LeftWallGoalSizeParameters: {fileID: 11400000, guid: 6ee7938d76af6470b9dbbd25da11d38f, type: 2}
+  RightWallVerticalPositionParameters: {fileID: 11400000, guid: b538056fe145d49ebb78b6b5a5e6f54f, type: 2}
+  RightWallGoalSizeParameters: {fileID: 11400000, guid: 6ee7938d76af6470b9dbbd25da11d38f, type: 2}

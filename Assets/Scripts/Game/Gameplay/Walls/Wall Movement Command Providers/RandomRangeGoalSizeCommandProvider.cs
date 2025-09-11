@@ -2,15 +2,15 @@
 
 public class RandomRangeGoalSizeCommandProvider : ICommandProvider<IWallMovementCommand>
 {
-	private float minRange;
-	private float maxRange;
-	private float duration;
+    private float minRange;
+    private float maxRange;
+    private float duration;
 
-	public RandomRangeGoalSizeCommandProvider(float newMinRange, float newMaxRange, float newDuration)
-	{
-		minRange = newMinRange;
-        maxRange = newMaxRange;
-		duration = newDuration;
+    public RandomRangeGoalSizeCommandProvider(RandomRangeGoalSizeCommandProviderParameters parameters)
+    {
+        minRange = parameters.MinRange;
+        maxRange = parameters.MaxRange;
+        duration = parameters.Duration;
     }
 
     public bool TryGetNext(out IWallMovementCommand nextCommand)

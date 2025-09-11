@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2346747a25c26435d97fa46eb2833813, type: 3}
   m_Name: Constant Circle Shape Spawn Datum 1
   m_EditorClassIdentifier: 
-  shapeType: 0
+  shapeDatum: {fileID: 11400000, guid: 8c05ec1b8b353477982243115524405b, type: 2}
   SpawnTime: 0.1
   SpawnCount: 1

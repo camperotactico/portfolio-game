@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 
-[CreateAssetMenu(fileName = "ShapeData", menuName = "Scriptable Objects/Gameplay/Shapes/Shapes Data", order = 0)]
+[CreateAssetMenu(fileName = "ShapeData", menuName = "Scriptable Objects/Data/Shapes/Shapes Data", order = 0)]
 public class ShapeData : ScriptableObject
 {
     [SerializeField]

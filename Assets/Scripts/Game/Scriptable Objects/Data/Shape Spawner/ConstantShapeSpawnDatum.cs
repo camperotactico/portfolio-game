@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "ConstantShapeSpawnDatum", menuName = "Scriptable Objects/Gameplay/Shape Spawner/Shape Spawner Strategies/Constant ShapeSpawn Datum", order = 0)]
+[CreateAssetMenu(fileName = "ConstantShapeSpawnDatum", menuName = "Scriptable Objects/Data/Shape Spawner/Shape Spawner Strategies/Constant ShapeSpawn Datum", order = 0)]
 public class ConstantShapeSpawnDatum : BaseShapeSpawnDatum
 {
     [Header("Spawn Strategy Parameters")]
