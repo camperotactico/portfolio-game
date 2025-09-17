@@ -6,8 +6,6 @@ public class ShapeSpawner : MonoBehaviour
 {
     [SerializeField]
     private Transform shapesParent;
-    [SerializeField]
-    private ShapeData shapeData;
 
     [Header("Runtime Sets")]
     [SerializeField]
@@ -51,7 +49,7 @@ public class ShapeSpawner : MonoBehaviour
         {
             if (!shapeDatumToShapePool.ContainsKey(shapeSpawnDatum.ShapeDatum))
             {
-                shapeDatumToShapePool[shapeSpawnDatum.ShapeDatum] = new Pool<Shape>(shapeData.GetShapePrefab(shapeSpawnDatum.ShapeDatum), shapesParent, 32, 128);
+                shapeDatumToShapePool[shapeSpawnDatum.ShapeDatum] = new Pool<Shape>(shapeSpawnDatum.ShapeDatum.ShapePrefab, shapesParent, 32, 128);
             }
 
             if (!shapeDatumToShapeSpawnStrategy.ContainsKey(shapeSpawnDatum.ShapeDatum))

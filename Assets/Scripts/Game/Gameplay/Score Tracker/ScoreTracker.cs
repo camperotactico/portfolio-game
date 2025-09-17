@@ -1,12 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField]
-    private ShapeData allShapeData;
-
     [Header("Emitting Event Channels")]
     [SerializeField]
     private ScoreTrackerEventChannel scoreTrackerEventChannel;

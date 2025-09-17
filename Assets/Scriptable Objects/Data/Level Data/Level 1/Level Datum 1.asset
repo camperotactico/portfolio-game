@@ -18,6 +18,7 @@ MonoBehaviour:
   ShapeSpawnData:
   - {fileID: 11400000, guid: 75d7ce319be0140e7948a1172faed8da, type: 2}
   - {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}
+  - {fileID: 11400000, guid: be834fb254dd642279da1f5260a55ce8, type: 2}
   BalancePlatformParameters: {fileID: 11400000, guid: fceba0fea36b746bbbbdd5a601c4c1e6, type: 2}
   LeftPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
   RightPlatformPivotParameters: {fileID: 11400000, guid: 9d4f4281fd1a8475b84dcc18f2325eb5, type: 2}
