@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7132960375408541019}
   - component: {fileID: 1373400943433136440}
   m_Layer: 0
-  m_Name: Level Loader
+  m_Name: Scene Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplaySceneReference: {fileID: 11400000, guid: e0e76a2e5cfe541e1bfface97298f64e, type: 2}
-  LevelButtonPressed: {fileID: 11400000, guid: 8ef21a4381d1c498fb6f779f438ad292, type: 2}
   LevelLoadRequestRuntimeSet: {fileID: 11400000, guid: 879474e368c85435b90bfc0f6c0481aa, type: 2}

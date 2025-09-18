@@ -177,7 +177,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 30}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &161166785075550511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -259,19 +259,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8553864342208617677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 821432902568f4bee9ed90dd416fea72, type: 2}
-        m_TargetAssemblyTypeName: VoidEventChannel, Shared
-        m_MethodName: Emit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5507939416306173922
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +546,7 @@ GameObject:
   - component: {fileID: 7768882192270563948}
   - component: {fileID: 1886966443063435306}
   - component: {fileID: 1312451514834640354}
+  - component: {fileID: 7516888701280937089}
   m_Layer: 0
   m_Name: Level Completed Canvas
   m_TagString: Untagged
@@ -650,6 +639,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7516888701280937089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562463133637124223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4d8b54e6e644e2fbf480be9286fb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playNextLevelButton: {fileID: 6971913589425407790}
+  PlayNextLevelButtonPressed: {fileID: 11400000, guid: 821432902568f4bee9ed90dd416fea72, type: 2}
+  LevelLoadRequestRuntimeSet: {fileID: 11400000, guid: 879474e368c85435b90bfc0f6c0481aa, type: 2}
+  AvailableLevelDataRuntimeSet: {fileID: 11400000, guid: 519606072e0fc4924b89285aeaf5ade5, type: 2}
 --- !u!1001 &2576368847763093396
 PrefabInstance:
   m_ObjectHideFlags: 0
