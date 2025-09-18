@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d7112c0872d0405082293a97142e421, type: 3}
-  m_Name: ShapeLifecycleEventChannel
+  m_Name: ShapeEnteredShapesGoal
   m_EditorClassIdentifier: 
   EnteredGoal:
     m_PersistentCalls:

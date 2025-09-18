@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class LevelButtonsDisplay : MonoBehaviour
 {
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private LevelDataAvailabilityEventChannel levelDataAvailabilityEventChannel;
+    public VoidEventChannel LevelDataRequested;
+    public VoidEventChannel LevelDataReady;
 
     [Header("Runtime Sets")]
     [SerializeField]
@@ -34,16 +34,16 @@ public class LevelButtonsDisplay : MonoBehaviour
 
     void OnEnable()
     {
-        levelDataAvailabilityEventChannel.LevelDataRequested.AddListener(OnLevelDataRequested);
-        levelDataAvailabilityEventChannel.LevelDataReady.AddListener(OnLevelDataReady);
+        LevelDataRequested.AddListener(OnLevelDataRequested);
+        LevelDataReady.AddListener(OnLevelDataReady);
         previousPageButton.onClick.AddListener(OnPreviousPageButtonPressed);
         nextPageButton.onClick.AddListener(OnNextPageButtonPressed);
     }
 
     void OnDisable()
     {
-        levelDataAvailabilityEventChannel.LevelDataRequested.RemoveListener(OnLevelDataRequested);
-        levelDataAvailabilityEventChannel.LevelDataReady.RemoveListener(OnLevelDataReady);
+        LevelDataRequested.RemoveListener(OnLevelDataRequested);
+        LevelDataReady.RemoveListener(OnLevelDataReady);
         previousPageButton.onClick.RemoveListener(OnPreviousPageButtonPressed);
         nextPageButton.onClick.RemoveListener(OnNextPageButtonPressed);
     }

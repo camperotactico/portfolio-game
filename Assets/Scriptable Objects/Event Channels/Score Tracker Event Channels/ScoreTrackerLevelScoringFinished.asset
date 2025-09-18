@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b49277cb97c704fcebb9e66c9dc27216, type: 3}
-  m_Name: ScoreTrackerEventChannel
+  m_Script: {fileID: 11500000, guid: e6ef248bcbd49405faae30d507bce415, type: 3}
+  m_Name: ScoreTrackerLevelScoringFinished
   m_EditorClassIdentifier: 
-  CompletionScoreChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  CurrentScoreChanged:
-    m_PersistentCalls:
-      m_Calls: []

@@ -22,8 +22,7 @@ public class Level : MonoBehaviour
     [Header("Receiving Event Channels")]
     public VoidEventChannel GameTimerStopped;
     public VoidEventChannel GameTimerTimedOut;
-    [SerializeField]
-    private ScoreTrackerEventChannel scoreTrackerEventChannel;
+    public IntEventChannel ScoreTrackerLevelScoringFinished;
 
     private LevelDatum levelDatum;
 
@@ -47,13 +46,13 @@ public class Level : MonoBehaviour
         GameTimerTimedOut.RemoveListener(OnGameTimerStoppedOrTimedOut);
 
 
-        scoreTrackerEventChannel.LevelScoringFinished.AddListener(OnLevelScoringFinished);
+        ScoreTrackerLevelScoringFinished.AddListener(OnLevelScoringFinished);
         LevelFinished.Emit();
     }
 
     private void OnLevelScoringFinished(int finishScore)
     {
-        scoreTrackerEventChannel.LevelScoringFinished.RemoveListener(OnLevelScoringFinished);
+        ScoreTrackerLevelScoringFinished.RemoveListener(OnLevelScoringFinished);
 
         if (finishScore < levelDatum.CompletionScore)
         {

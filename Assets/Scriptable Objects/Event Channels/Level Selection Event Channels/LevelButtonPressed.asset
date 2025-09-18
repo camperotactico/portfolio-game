@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9260887f1b74e22bff8518da42ceb3, type: 3}
-  m_Name: LevelSelectionEventChannel
+  m_Script: {fileID: 11500000, guid: 2ed26ff5b523447a39e84c6b5b3f99ed, type: 3}
+  m_Name: LevelButtonPressed
   m_EditorClassIdentifier: 
-  LevelButtonPressed:
-    m_PersistentCalls:
-      m_Calls: []

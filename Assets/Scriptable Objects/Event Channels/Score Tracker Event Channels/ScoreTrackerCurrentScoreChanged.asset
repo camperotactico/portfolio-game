@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d55f65aec5fb4be18bdd7d2c16292d0, type: 3}
-  m_Name: LevelDataAvailabilityEventChannel
+  m_Script: {fileID: 11500000, guid: e6ef248bcbd49405faae30d507bce415, type: 3}
+  m_Name: ScoreTrackerCurrentScoreChanged
   m_EditorClassIdentifier: 
-  LevelDataRequested:
-    m_PersistentCalls:
-      m_Calls: []
-  LevelDataReady:
-    m_PersistentCalls:
-      m_Calls: []

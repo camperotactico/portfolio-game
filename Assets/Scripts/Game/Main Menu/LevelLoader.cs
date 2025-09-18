@@ -8,21 +8,19 @@ public class LevelLoader : MonoBehaviour
     private SceneReference gameplaySceneReference;
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private LevelSelectionEventChannel levelSelectionEventChannel;
+    public LevelDatumEventChannel LevelButtonPressed;
 
     [Header("Runtime Sets")]
-    [SerializeField]
-    private LevelLoadRequestRuntimeSet levelLoadRequestRuntimeSet;
+    public LevelLoadRequestRuntimeSet LevelLoadRequestRuntimeSet;
 
     void OnEnable()
     {
-        levelSelectionEventChannel.LevelButtonPressed.AddListener(OnLevelButtonPressed);
+        LevelButtonPressed.AddListener(OnLevelButtonPressed);
     }
 
     void OnDisable()
     {
-        levelSelectionEventChannel.LevelButtonPressed.RemoveListener(OnLevelButtonPressed);
+        LevelButtonPressed.RemoveListener(OnLevelButtonPressed);
     }
 
     private void OnLevelButtonPressed(LevelDatum levelDatum)
@@ -33,7 +31,7 @@ public class LevelLoader : MonoBehaviour
     private void LoadLevel(LevelDatum levelDatum)
     {
         Debug.Log("TODO: Make this method asynchronous and show a Loading Screen");
-        levelLoadRequestRuntimeSet.LevelDatum = levelDatum;
+        LevelLoadRequestRuntimeSet.LevelDatum = levelDatum;
         SceneManager.LoadScene(gameplaySceneReference.BuildIndex);
     }
 }

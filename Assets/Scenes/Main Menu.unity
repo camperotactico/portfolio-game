@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb2528c7df1d44a08fd7dc921711f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDataAvailabilityEventChannel: {fileID: 11400000, guid: 138885a8a6a164eea952fe4e5dd8135e, type: 2}
+  LevelDataRequested: {fileID: 11400000, guid: d8c2d53dc064b479ab952f7fe2aebb43, type: 2}
 --- !u!1 &1396416926
 GameObject:
   m_ObjectHideFlags: 0

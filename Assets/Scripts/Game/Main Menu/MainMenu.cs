@@ -3,12 +3,11 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     [Header("Emitting Event Channels")]
-    [SerializeField]
-    private LevelDataAvailabilityEventChannel levelDataAvailabilityEventChannel;
+    public VoidEventChannel LevelDataRequested;
 
     void Start()
     {
-        levelDataAvailabilityEventChannel.EmitLevelDataRequested();
+        LevelDataRequested.Emit();
     }
 
 }

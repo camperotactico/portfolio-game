@@ -627,7 +627,7 @@ MonoBehaviour:
   LevelFailed: {fileID: 11400000, guid: ac4bf75774b6040349fd0ffde65d580b, type: 2}
   GameTimerStopped: {fileID: 11400000, guid: 4016c2d20608849be859729ba6b3477c, type: 2}
   GameTimerTimedOut: {fileID: 11400000, guid: 51bfba79487fd4e0c8197883062cb0e8, type: 2}
-  scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}
+  ScoreTrackerLevelScoringFinished: {fileID: 11400000, guid: 1eea0ec1c2e634fc7ad5db6475c48f37, type: 2}
 --- !u!4 &1110307198
 Transform:
   m_ObjectHideFlags: 0

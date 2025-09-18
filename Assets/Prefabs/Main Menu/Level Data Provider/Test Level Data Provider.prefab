@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49ce5becf50342ef94e7eb2386fe58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDataAvailabilityEventChannel: {fileID: 11400000, guid: 138885a8a6a164eea952fe4e5dd8135e, type: 2}
+  LevelDataReady: {fileID: 11400000, guid: ea24aaa31067047068d1d343a8eebc19, type: 2}
+  LevelDataRequested: {fileID: 11400000, guid: d8c2d53dc064b479ab952f7fe2aebb43, type: 2}
   availableLevelDataRuntimeSet: {fileID: 11400000, guid: 519606072e0fc4924b89285aeaf5ade5, type: 2}
   testLevelData: []

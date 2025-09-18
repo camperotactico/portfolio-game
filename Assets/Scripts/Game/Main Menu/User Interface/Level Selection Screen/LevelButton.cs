@@ -6,8 +6,7 @@ public class LevelButton : MonoBehaviour
     private const string LEVEL_NUMBER_TEXT_TEMPLATE = "Level {0}";
 
     [Header("Emitting Event Channels")]
-    [SerializeField]
-    private LevelSelectionEventChannel levelSelectionEventChannel;
+    public LevelDatumEventChannel LevelButtonPressed;
 
     [Header("Components")]
     [SerializeField]
@@ -17,7 +16,7 @@ public class LevelButton : MonoBehaviour
 
     public void OnButtonPressed()
     {
-        levelSelectionEventChannel.EmitLevelButtonPressed(levelDatum);
+        LevelButtonPressed.Emit(levelDatum);
     }
 
     internal void SetLevelDatum(LevelDatum newLevelDatum)

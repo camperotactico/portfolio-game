@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdee3d61f3800420c9b6e35e18fbd46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectionEventChannel: {fileID: 11400000, guid: 4b30a446a8b694de791f613d11b3dd55, type: 2}
+  LevelButtonPressed: {fileID: 11400000, guid: 8ef21a4381d1c498fb6f779f438ad292, type: 2}
   levelNumberText: {fileID: 2955385286996915985}
 --- !u!222 &5430430398028225207
 CanvasRenderer:

@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f8e42bcc5de4751a065d41e3b08c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}
+  CompletionScoreChanged: {fileID: 11400000, guid: e865aa1e756204b4985f51e7e5059db7, type: 2}
+  CurrentScoreChanged: {fileID: 11400000, guid: 893dff48d988d4b8188a5395892ba043, type: 2}
+  LevelScoringFinished: {fileID: 11400000, guid: 1eea0ec1c2e634fc7ad5db6475c48f37, type: 2}
   LevelInitialisationRequested: {fileID: 11400000, guid: 68c763699e17c4a55bfcad9ce412f85d, type: 2}
   LevelStarted: {fileID: 11400000, guid: e71c7db31526745ea84105b1b7151790, type: 2}
   LevelFinished: {fileID: 11400000, guid: 14e42f2b8643b4594a82cee9850f4880, type: 2}
-  shapeLifecycleEventChannel: {fileID: 11400000, guid: 7dbc906932ed644e29e48245444c8a0c, type: 2}
+  ShapeEnteredShapesGoal: {fileID: 11400000, guid: 7dbc906932ed644e29e48245444c8a0c, type: 2}

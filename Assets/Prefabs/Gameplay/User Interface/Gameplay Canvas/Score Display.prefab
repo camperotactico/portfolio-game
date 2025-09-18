@@ -727,7 +727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completionScoreNumberText: {fileID: 6902088873377818801}
   currentScoreNumberText: {fileID: 6884394272700385735}
-  scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}
+  ScoreTrackerCurrentScoreChanged: {fileID: 11400000, guid: 893dff48d988d4b8188a5395892ba043, type: 2}
+  ScoreTrackerCompletionScoreChanged: {fileID: 11400000, guid: e865aa1e756204b4985f51e7e5059db7, type: 2}
 --- !u!1 &9099346701355775258
 GameObject:
   m_ObjectHideFlags: 0

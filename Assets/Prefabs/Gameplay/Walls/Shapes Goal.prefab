@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0799b5b7d144ee298fd2494f368167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeLifecycleEventChannel: {fileID: 11400000, guid: 7dbc906932ed644e29e48245444c8a0c, type: 2}
+  ShapeEnteredShapesGoal: {fileID: 11400000, guid: 7dbc906932ed644e29e48245444c8a0c, type: 2}
   activeShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
 --- !u!212 &1784779578037552235
 SpriteRenderer:

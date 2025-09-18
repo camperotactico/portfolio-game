@@ -3,15 +3,15 @@
 public class ScoreTracker : MonoBehaviour
 {
     [Header("Emitting Event Channels")]
-    [SerializeField]
-    private ScoreTrackerEventChannel scoreTrackerEventChannel;
+    public IntEventChannel CompletionScoreChanged;
+    public IntEventChannel CurrentScoreChanged;
+    public IntEventChannel LevelScoringFinished;
 
     [Header("Receiving Event Channels")]
     public LevelDatumEventChannel LevelInitialisationRequested;
     public VoidEventChannel LevelStarted;
     public VoidEventChannel LevelFinished;
-    [SerializeField]
-    private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
+    public ShapeShapesGoalEventChannel ShapeEnteredShapesGoal;
 
     private int completionScore;
     private int currentScore;
@@ -28,32 +28,32 @@ public class ScoreTracker : MonoBehaviour
         LevelInitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
         LevelStarted.RemoveListener(OnLevelStarted);
         LevelFinished.RemoveListener(OnLevelFinished);
-        shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
+        ShapeEnteredShapesGoal.RemoveListener(OnShapeEnteredGoal);
     }
 
 
     private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
         completionScore = levelDatum.CompletionScore;
-        scoreTrackerEventChannel.EmitCompletionScoreChanged(completionScore);
+        CompletionScoreChanged.Emit(completionScore);
     }
 
     private void OnLevelStarted()
     {
         currentScore = 0;
-        shapeLifecycleEventChannel.EnteredGoal.AddListener(OnShapeEnteredGoal);
+        ShapeEnteredShapesGoal.AddListener(OnShapeEnteredGoal);
     }
 
     private void OnLevelFinished()
     {
-        shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
-        scoreTrackerEventChannel.EmitLevelScoringFinished(currentScore);
+        ShapeEnteredShapesGoal.RemoveListener(OnShapeEnteredGoal);
+        LevelScoringFinished.Emit(currentScore);
     }
 
     private void OnShapeEnteredGoal(Shape shape, ShapesGoal shapesGoal)
     {
         currentScore += shape.ShapeDatum.Score;
-        scoreTrackerEventChannel.EmitCurrentScoreChanged(currentScore);
+        CurrentScoreChanged.Emit(currentScore);
     }
 }
 

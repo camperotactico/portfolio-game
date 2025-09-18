@@ -1,12 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShapesGoal : MonoBehaviour
 {
-
     [Header("Emitting Event Channels")]
     [SerializeField]
-    private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
+    private ShapeShapesGoalEventChannel ShapeEnteredShapesGoal;
 
     [Header("Runtime Sets")]
     [SerializeField]
@@ -16,7 +14,7 @@ public class ShapesGoal : MonoBehaviour
     {
         if (activeShapesRuntimeSet.TryGetShape(collider2D.GetInstanceID(), out Shape shape))
         {
-            shapeLifecycleEventChannel.EmitEnteredGoal(shape, this);
+            ShapeEnteredShapesGoal.Emit(shape, this);
             shape.ReleaseToPool();
         }
     }

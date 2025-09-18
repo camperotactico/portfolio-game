@@ -3,9 +3,11 @@ using UnityEngine;
 
 public abstract class BaseLevelDataProvider : MonoBehaviour
 {
-    [Header("Emitting & Receiving Event Channels")]
-    [SerializeField]
-    private LevelDataAvailabilityEventChannel levelDataAvailabilityEventChannel;
+    [Header("Emitting Event Channels")]
+    public VoidEventChannel LevelDataReady;
+
+    [Header("Receiving Event Channels")]
+    public VoidEventChannel LevelDataRequested;
 
     [Header("Runtime Sets")]
     [SerializeField]
@@ -20,11 +22,11 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
 
     void OnEnable()
     {
-        levelDataAvailabilityEventChannel.LevelDataRequested.AddListener(OnLeveDataRequested);
+        LevelDataRequested.AddListener(OnLeveDataRequested);
     }
     void OnDisable()
     {
-        levelDataAvailabilityEventChannel.LevelDataRequested.RemoveListener(OnLeveDataRequested);
+        LevelDataRequested.RemoveListener(OnLeveDataRequested);
     }
 
     private void OnLeveDataRequested()
@@ -40,7 +42,7 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
     private IEnumerator WaitForLevelDataLoad()
     {
         yield return LoadLevelData();
-        levelDataAvailabilityEventChannel.EmitLevelDataReady();
+        LevelDataReady.Emit();
         yield return null;
     }
 

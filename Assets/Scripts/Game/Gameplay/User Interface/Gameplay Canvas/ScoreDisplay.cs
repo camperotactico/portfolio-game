@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -13,19 +12,19 @@ public class ScoreDisplay : MonoBehaviour
     private TMP_Text currentScoreNumberText;
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private ScoreTrackerEventChannel scoreTrackerEventChannel;
+    public IntEventChannel ScoreTrackerCurrentScoreChanged;
+    public IntEventChannel ScoreTrackerCompletionScoreChanged;
 
     private void OnEnable()
     {
-        scoreTrackerEventChannel.CurrentScoreChanged.AddListener(OnCurrentScoreChanged);
-        scoreTrackerEventChannel.CompletionScoreChanged.AddListener(OnCompletionScoreChanged);
+        ScoreTrackerCurrentScoreChanged.AddListener(OnCurrentScoreChanged);
+        ScoreTrackerCompletionScoreChanged.AddListener(OnCompletionScoreChanged);
     }
 
     private void OnDisable()
     {
-        scoreTrackerEventChannel.CurrentScoreChanged.RemoveListener(OnCurrentScoreChanged);
-        scoreTrackerEventChannel.CompletionScoreChanged.RemoveListener(OnCompletionScoreChanged);
+        ScoreTrackerCurrentScoreChanged.RemoveListener(OnCurrentScoreChanged);
+        ScoreTrackerCompletionScoreChanged.RemoveListener(OnCompletionScoreChanged);
     }
 
     private void OnCompletionScoreChanged(int newCompletionScore)
