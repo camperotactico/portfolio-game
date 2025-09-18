@@ -59,8 +59,8 @@ public class LevelButtonsDisplay : MonoBehaviour
         loadingLevelDataDisplay.SetActive(false);
         buttonsDisplay.SetActive(true);
 
-        totalButtonPages = availableLevelDataRuntimeSet.AvailableLevelData.Count / levelButtons.Length;
-        if (availableLevelDataRuntimeSet.AvailableLevelData.Count % levelButtons.Length > 0)
+        totalButtonPages = availableLevelDataRuntimeSet.LevelCount / levelButtons.Length;
+        if (availableLevelDataRuntimeSet.LevelCount % levelButtons.Length > 0)
         {
             totalButtonPages++;
         }
@@ -83,15 +83,15 @@ public class LevelButtonsDisplay : MonoBehaviour
 
     public void UpdateDisplayedLevelButtons()
     {
-        int startLevelDatumIndex = currentButtonPageIndex * levelButtons.Length;
+        int startLevelID = (currentButtonPageIndex * levelButtons.Length) + 1;
 
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int levelDatumIndex = startLevelDatumIndex + i;
-            if (levelDatumIndex < availableLevelDataRuntimeSet.AvailableLevelData.Count)
+            int levelID = startLevelID + i;
+            if (availableLevelDataRuntimeSet.TryGetLevelDatum(levelID, out LevelDatum levelDatum))
             {
                 levelButtons[i].gameObject.SetActive(true);
-                levelButtons[i].SetLevelDatum(availableLevelDataRuntimeSet.AvailableLevelData[levelDatumIndex]);
+                levelButtons[i].SetLevelDatum(levelDatum);
             }
             else
             {

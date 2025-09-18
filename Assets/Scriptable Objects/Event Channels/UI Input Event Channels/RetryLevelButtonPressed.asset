@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78403b83f2a774f03b686963ce50d1dd, type: 3}
-  m_Name: AvailableLevelDataRuntimeSet
+  m_Script: {fileID: 11500000, guid: 6e4b150f3e3f74f8fb8855c1577691ea, type: 3}
+  m_Name: RetryLevelButtonPressed
   m_EditorClassIdentifier: 
-  IsLoaded: 0
-  availableLevelData: []

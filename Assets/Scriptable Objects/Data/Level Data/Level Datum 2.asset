@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level Datum 2
   m_EditorClassIdentifier: 
   ID: 2
-  StartingTime: 20
+  StartingTime: 5
   CompletionScore: 400
   ShapeSpawnData:
   - {fileID: 11400000, guid: 9460b26d0e49a47968b31ab6e5545122, type: 2}

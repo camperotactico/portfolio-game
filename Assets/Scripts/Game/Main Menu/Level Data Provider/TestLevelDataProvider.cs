@@ -10,7 +10,7 @@ public class TestLevelDataProvider : BaseLevelDataProvider
 
     public override IEnumerator LoadLevelData()
     {
-        availableLevelDataRuntimeSet.AvailableLevelData.AddRange(testLevelData);
+        availableLevelDataRuntimeSet.AddLevelData(testLevelData);
         yield return new WaitForSeconds(1f);
         Debug.Log("Test Levels loaded");
         yield return null;

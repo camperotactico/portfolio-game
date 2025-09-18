@@ -15,10 +15,6 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
 
     private Coroutine loadLevelDataCoroutine;
 
-    void Awake()
-    {
-        availableLevelDataRuntimeSet.AvailableLevelData.Clear();
-    }
 
     void OnEnable()
     {
@@ -31,6 +27,12 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
 
     private void OnLeveDataRequested()
     {
+        if (availableLevelDataRuntimeSet.IsLoaded)
+        {
+            LevelDataReady.Emit();
+            return;
+        }
+
         if (loadLevelDataCoroutine != null)
         {
             Debug.LogError("Trying to load LevelData twice.");
@@ -42,6 +44,7 @@ public abstract class BaseLevelDataProvider : MonoBehaviour
     private IEnumerator WaitForLevelDataLoad()
     {
         yield return LoadLevelData();
+        availableLevelDataRuntimeSet.IsLoaded = true;
         LevelDataReady.Emit();
         yield return null;
     }
