@@ -7,8 +7,9 @@ public class ScoreTracker : MonoBehaviour
     private ScoreTrackerEventChannel scoreTrackerEventChannel;
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private LevelLifecycleEventChannel levelLifecycleEventChannel;
+    public LevelDatumEventChannel LevelInitialisationRequested;
+    public VoidEventChannel LevelStarted;
+    public VoidEventChannel LevelFinished;
     [SerializeField]
     private ShapeLifecycleEventChannel shapeLifecycleEventChannel;
 
@@ -18,17 +19,18 @@ public class ScoreTracker : MonoBehaviour
 
     void OnEnable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
-        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+        LevelInitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        LevelStarted.AddListener(OnLevelStarted);
+        LevelFinished.AddListener(OnLevelFinished);
     }
     void OnDisable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
-        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
+        LevelInitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        LevelStarted.RemoveListener(OnLevelStarted);
+        LevelFinished.RemoveListener(OnLevelFinished);
         shapeLifecycleEventChannel.EnteredGoal.RemoveListener(OnShapeEnteredGoal);
     }
+
 
     private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {

@@ -6,8 +6,10 @@ public class WallsController : MonoBehaviour
 
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private LevelLifecycleEventChannel levelLifecycleEventChannel;
+    public LevelDatumEventChannel LevelInitialisationRequested;
+    public VoidEventChannel LevelStarted;
+    public VoidEventChannel LevelFinished;
+
 
     [Header("Components")]
     [SerializeField]
@@ -20,15 +22,15 @@ public class WallsController : MonoBehaviour
 
     void OnEnable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitialisationRequested);
-        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+        LevelInitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        LevelStarted.AddListener(OnLevelStarted);
+        LevelFinished.AddListener(OnLevelFinished);
     }
     void OnDisable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
-        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
+        LevelInitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        LevelStarted.RemoveListener(OnLevelStarted);
+        LevelFinished.RemoveListener(OnLevelFinished);
     }
 
     private void OnLevelInitialisationRequested(LevelDatum newLevelDatum)

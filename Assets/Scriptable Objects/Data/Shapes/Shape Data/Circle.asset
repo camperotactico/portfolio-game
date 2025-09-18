@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba7ff68e29c94e31b2c2ed5f7e16ae6, type: 3}
   m_Name: Circle
   m_EditorClassIdentifier: 
-  ShapeType: 0
+  ShapePrefab: {fileID: 3052527223372695539, guid: 693c0d89b232a40679bdcb807c66cf27, type: 3}
   Score: 1

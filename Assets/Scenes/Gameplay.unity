@@ -303,6 +303,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1810390631815366347, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810390631815366347, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810390631815366347, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810390631815366347, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2256379746990451666, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -459,6 +475,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6042733070639939480, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042733070639939480, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042733070639939480, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042733070639939480, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6089699984832405766, guid: 88a650fd9a52948d8b30b3e16f1bd2cf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -588,7 +620,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelLoadRequestRuntimeSet: {fileID: 11400000, guid: 879474e368c85435b90bfc0f6c0481aa, type: 2}
   mainMenuSceneReference: {fileID: 11400000, guid: aa4f9a3dec80e4bfe94b57e55b4ab8ea, type: 2}
-  levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
+  LevelInitialisationRequested: {fileID: 11400000, guid: 68c763699e17c4a55bfcad9ce412f85d, type: 2}
+  LevelStarted: {fileID: 11400000, guid: e71c7db31526745ea84105b1b7151790, type: 2}
+  LevelFinished: {fileID: 11400000, guid: 14e42f2b8643b4594a82cee9850f4880, type: 2}
+  LevelCompleted: {fileID: 11400000, guid: dc7a695ca3fe249a0a70eb44fe6d6b70, type: 2}
+  LevelFailed: {fileID: 11400000, guid: ac4bf75774b6040349fd0ffde65d580b, type: 2}
   gameTimerEventChannel: {fileID: 11400000, guid: 46c65fe79cbed46249b8d301236948bd, type: 2}
   scoreTrackerEventChannel: {fileID: 11400000, guid: b4b8c2ef9444140a9a74d56eab83141a, type: 2}
 --- !u!4 &1110307198

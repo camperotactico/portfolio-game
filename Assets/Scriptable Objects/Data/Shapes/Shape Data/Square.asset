@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba7ff68e29c94e31b2c2ed5f7e16ae6, type: 3}
   m_Name: Square
   m_EditorClassIdentifier: 
+  ShapePrefab: {fileID: 4542930536152811245, guid: 7ab39c891f00a4863a60f3dec8e6501b, type: 3}
   Score: 2

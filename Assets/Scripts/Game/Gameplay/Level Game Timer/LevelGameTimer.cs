@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(GameTimer))]
@@ -8,27 +7,27 @@ public class LevelGameTimer : MonoBehaviour
     private GameTimer gameTimer;
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private LevelLifecycleEventChannel levelLifecycleEventChannel;
-
+    public LevelDatumEventChannel LevelInitialisationRequested;
+    public VoidEventChannel LevelStarted;
+    public VoidEventChannel LevelFinished;
 
     private float levelStartingTime;
 
     void OnEnable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.AddListener(OnLevelInitializationRequested);
-        levelLifecycleEventChannel.Started.AddListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.AddListener(OnLevelFinished);
+        LevelInitialisationRequested.AddListener(OnLevelInitialisationRequested);
+        LevelStarted.AddListener(OnLevelStarted);
+        LevelFinished.AddListener(OnLevelFinished);
     }
-
     void OnDisable()
     {
-        levelLifecycleEventChannel.InitialisationRequested.RemoveListener(OnLevelInitializationRequested);
-        levelLifecycleEventChannel.Started.RemoveListener(OnLevelStarted);
-        levelLifecycleEventChannel.Finished.RemoveListener(OnLevelFinished);
+        LevelInitialisationRequested.RemoveListener(OnLevelInitialisationRequested);
+        LevelStarted.RemoveListener(OnLevelStarted);
+        LevelFinished.RemoveListener(OnLevelFinished);
     }
 
-    private void OnLevelInitializationRequested(LevelDatum levelDatum)
+
+    private void OnLevelInitialisationRequested(LevelDatum levelDatum)
     {
         levelStartingTime = levelDatum.StartingTime;
     }

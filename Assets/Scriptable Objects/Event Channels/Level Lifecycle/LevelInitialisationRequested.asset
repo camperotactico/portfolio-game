@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba7ff68e29c94e31b2c2ed5f7e16ae6, type: 3}
-  m_Name: Triangle
+  m_Script: {fileID: 11500000, guid: 2ed26ff5b523447a39e84c6b5b3f99ed, type: 3}
+  m_Name: LevelInitialisationRequested
   m_EditorClassIdentifier: 
-  ShapePrefab: {fileID: 2928836403851621129, guid: 93d54bdd477cd4f0f953e42c62d0236c, type: 3}
-  Score: 5

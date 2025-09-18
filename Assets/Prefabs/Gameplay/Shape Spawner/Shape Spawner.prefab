@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapesParent: {fileID: 8425861936337536023}
-  shapeData: {fileID: 11400000, guid: 8b29f7a033c174d159e307b95f590652, type: 2}
   spawnedShapesRuntimeSet: {fileID: 11400000, guid: 34b3a0c4728b4446bafcba16efa115ce, type: 2}
-  levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
+  LevelInitialisationRequested: {fileID: 11400000, guid: 68c763699e17c4a55bfcad9ce412f85d, type: 2}
+  LevelStarted: {fileID: 11400000, guid: e71c7db31526745ea84105b1b7151790, type: 2}
+  LevelFinished: {fileID: 11400000, guid: 14e42f2b8643b4594a82cee9850f4880, type: 2}
 --- !u!1 &4569330426087651413
 GameObject:
   m_ObjectHideFlags: 0

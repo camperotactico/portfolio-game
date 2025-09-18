@@ -12,8 +12,12 @@ public class Level : MonoBehaviour
     private SceneReference mainMenuSceneReference;
 
     [Header("Emitting Event Channels")]
-    [SerializeField]
-    private LevelLifecycleEventChannel levelLifecycleEventChannel;
+    public LevelDatumEventChannel LevelInitialisationRequested;
+    public VoidEventChannel LevelStarted;
+    public VoidEventChannel LevelFinished;
+    public VoidEventChannel LevelCompleted;
+    public VoidEventChannel LevelFailed;
+
 
     [Header("Receiving Event Channels")]
     [SerializeField]
@@ -33,8 +37,8 @@ public class Level : MonoBehaviour
         gameTimerEventChannel.Stopped.AddListener(OnGameTimerStoppedOrTimedOut);
         gameTimerEventChannel.Timeout.AddListener(OnGameTimerStoppedOrTimedOut);
 
-        levelLifecycleEventChannel.EmitInitialisationRequestedEvent(levelDatum);
-        levelLifecycleEventChannel.EmitStartedEvent();
+        LevelInitialisationRequested.Emit(levelDatum);
+        LevelStarted.Emit();
     }
 
     private void OnGameTimerStoppedOrTimedOut()
@@ -44,25 +48,22 @@ public class Level : MonoBehaviour
 
 
         scoreTrackerEventChannel.LevelScoringFinished.AddListener(OnLevelScoringFinished);
-        levelLifecycleEventChannel.EmitFinishedEvent();
+        LevelFinished.Emit();
     }
 
     private void OnLevelScoringFinished(int finishScore)
     {
         scoreTrackerEventChannel.LevelScoringFinished.RemoveListener(OnLevelScoringFinished);
 
-
-
-        Debug.Log("TODO: Replace this with actual victory and losing screens");
         if (finishScore < levelDatum.CompletionScore)
         {
-            // Lose
+            LevelFailed.Emit();
         }
         else
         {
-            // Victory
+            LevelCompleted.Emit();
         }
 
-        SceneManager.LoadScene(mainMenuSceneReference.BuildIndex);
+        // SceneManager.LoadScene(mainMenuSceneReference.BuildIndex);
     }
 }

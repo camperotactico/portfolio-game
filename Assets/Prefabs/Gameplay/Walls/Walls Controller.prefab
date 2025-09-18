@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e2f6ae8653a4a9ea49447232c6713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLifecycleEventChannel: {fileID: 11400000, guid: 590bdcbd536754343ab1ece705a3f667, type: 2}
+  LevelInitialisationRequested: {fileID: 11400000, guid: 68c763699e17c4a55bfcad9ce412f85d, type: 2}
+  LevelStarted: {fileID: 11400000, guid: e71c7db31526745ea84105b1b7151790, type: 2}
+  LevelFinished: {fileID: 11400000, guid: 14e42f2b8643b4594a82cee9850f4880, type: 2}
   leftWallMovementController: {fileID: 5441562023858387080}
   rightWallMovementController: {fileID: 7020728566210928949}
 --- !u!1001 &522016795377167345
