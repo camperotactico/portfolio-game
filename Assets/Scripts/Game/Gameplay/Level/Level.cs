@@ -20,8 +20,8 @@ public class Level : MonoBehaviour
 
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private GameTimerEventChannel gameTimerEventChannel;
+    public VoidEventChannel GameTimerStopped;
+    public VoidEventChannel GameTimerTimedOut;
     [SerializeField]
     private ScoreTrackerEventChannel scoreTrackerEventChannel;
 
@@ -34,8 +34,8 @@ public class Level : MonoBehaviour
         Application.targetFrameRate = 0;
         levelDatum = levelLoadRequestRuntimeSet.LevelDatum;
 
-        gameTimerEventChannel.Stopped.AddListener(OnGameTimerStoppedOrTimedOut);
-        gameTimerEventChannel.Timeout.AddListener(OnGameTimerStoppedOrTimedOut);
+        GameTimerStopped.AddListener(OnGameTimerStoppedOrTimedOut);
+        GameTimerTimedOut.AddListener(OnGameTimerStoppedOrTimedOut);
 
         LevelInitialisationRequested.Emit(levelDatum);
         LevelStarted.Emit();
@@ -43,8 +43,8 @@ public class Level : MonoBehaviour
 
     private void OnGameTimerStoppedOrTimedOut()
     {
-        gameTimerEventChannel.Stopped.RemoveListener(OnGameTimerStoppedOrTimedOut);
-        gameTimerEventChannel.Timeout.RemoveListener(OnGameTimerStoppedOrTimedOut);
+        GameTimerStopped.RemoveListener(OnGameTimerStoppedOrTimedOut);
+        GameTimerTimedOut.RemoveListener(OnGameTimerStoppedOrTimedOut);
 
 
         scoreTrackerEventChannel.LevelScoringFinished.AddListener(OnLevelScoringFinished);

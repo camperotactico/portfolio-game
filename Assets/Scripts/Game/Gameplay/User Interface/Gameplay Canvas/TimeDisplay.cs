@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -11,17 +10,16 @@ public class TimeDisplay : MonoBehaviour
     private TMP_Text remainingTimeText;
 
     [Header("Receiving Event Channels")]
-    [SerializeField]
-    private GameTimerEventChannel gameTimerEventChannel;
+    public FloatEventChannel GameTimerRemainingTimeChanged;
 
     void OnEnable()
     {
-        gameTimerEventChannel.RemainingTimeChanged.AddListener(OnRemainingTimeChanged);
+        GameTimerRemainingTimeChanged.AddListener(OnRemainingTimeChanged);
     }
 
     void OnDisable()
     {
-        gameTimerEventChannel.RemainingTimeChanged.RemoveListener(OnRemainingTimeChanged);
+        GameTimerRemainingTimeChanged.RemoveListener(OnRemainingTimeChanged);
     }
 
     private void OnRemainingTimeChanged(float newRemainingTime)

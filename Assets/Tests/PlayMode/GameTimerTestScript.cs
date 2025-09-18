@@ -11,7 +11,13 @@ public class GameTimerTestScript
     private const float EXTRA_DURATION = 0.5f;
 
     private GameTimer gameTimer;
-    private GameTimerEventChannel gameTimerEventChannel;
+
+    private VoidEventChannel GameTimerBegan;
+    private VoidEventChannel GameTimerStopped;
+    private VoidEventChannel GameTimerTimedOut;
+    private FloatEventChannel GameTimerRemainingTimeChanged;
+    private FloatEventChannel GameTimerDurationIncreased;
+    private FloatEventChannel GameTimerDurationDecreased;
 
     private GameTimer GetGameTimer()
     {
@@ -25,24 +31,37 @@ public class GameTimerTestScript
     public void SetUp()
     {
         gameTimer = GetGameTimer();
-        gameTimerEventChannel = ScriptableObject.CreateInstance<GameTimerEventChannel>();
 
-        gameTimer.GameTimerEventChannel = gameTimerEventChannel;
+        GameTimerBegan = ScriptableObject.CreateInstance<VoidEventChannel>();
+        GameTimerStopped = ScriptableObject.CreateInstance<VoidEventChannel>();
+        GameTimerTimedOut = ScriptableObject.CreateInstance<VoidEventChannel>();
+        GameTimerRemainingTimeChanged = ScriptableObject.CreateInstance<FloatEventChannel>();
+        GameTimerDurationIncreased = ScriptableObject.CreateInstance<FloatEventChannel>();
+        GameTimerDurationDecreased = ScriptableObject.CreateInstance<FloatEventChannel>();
+
+        gameTimer.Began = GameTimerBegan;
+        gameTimer.Stopped = GameTimerStopped;
+        gameTimer.TimedOut = GameTimerTimedOut;
+        gameTimer.RemainingTimeChanged = GameTimerRemainingTimeChanged;
+        gameTimer.DurationIncreased = GameTimerDurationIncreased;
+        gameTimer.DurationDecreased = GameTimerDurationDecreased;
+
     }
 
     [TearDown]
-    public void OneTimeTearDown()
+    public void TearDown()
     {
         if (gameTimer != null)
         {
             gameTimer = null;
         }
 
-        if (gameTimerEventChannel != null)
-        {
-            ScriptableObject.Destroy(gameTimerEventChannel);
-            gameTimerEventChannel = null;
-        }
+        ScriptableObject.Destroy(GameTimerBegan);
+        ScriptableObject.Destroy(GameTimerStopped);
+        ScriptableObject.Destroy(GameTimerTimedOut);
+        ScriptableObject.Destroy(GameTimerRemainingTimeChanged);
+        ScriptableObject.Destroy(GameTimerDurationIncreased);
+        ScriptableObject.Destroy(GameTimerDurationDecreased);
     }
 
 
@@ -51,7 +70,7 @@ public class GameTimerTestScript
     {
 
         bool gameTimerBeganEventCalled = false;
-        gameTimerEventChannel.Began.AddListener(() => gameTimerBeganEventCalled = true);
+        GameTimerBegan.AddListener(() => gameTimerBeganEventCalled = true);
         gameTimer.Begin(START_DURATION);
 
         yield return new WaitForEndOfFrame();
@@ -66,7 +85,7 @@ public class GameTimerTestScript
     public IEnumerator StopTimerTest()
     {
         bool gameTimerStoppedEventCalled = false;
-        gameTimerEventChannel.Stopped.AddListener(() => gameTimerStoppedEventCalled = true);
+        GameTimerStopped.AddListener(() => gameTimerStoppedEventCalled = true);
 
         gameTimer.Begin(START_DURATION);
         yield return new WaitForEndOfFrame();
@@ -84,7 +103,7 @@ public class GameTimerTestScript
     public IEnumerator TimeoutTest()
     {
         bool gameTimerTimeoutEventCalled = false;
-        gameTimerEventChannel.Timeout.AddListener(() => gameTimerTimeoutEventCalled = true);
+        GameTimerTimedOut.AddListener(() => gameTimerTimeoutEventCalled = true);
 
         gameTimer.Begin(START_DURATION);
         yield return new WaitForEndOfFrame();
@@ -102,7 +121,7 @@ public class GameTimerTestScript
     public IEnumerator StopStoppedTimerTest()
     {
         bool gameTimerStoppedEventCalled = false;
-        gameTimerEventChannel.Stopped.AddListener(() => gameTimerStoppedEventCalled = true);
+        GameTimerStopped.AddListener(() => gameTimerStoppedEventCalled = true);
 
         gameTimer.Begin(START_DURATION);
         yield return new WaitForEndOfFrame();
@@ -121,7 +140,7 @@ public class GameTimerTestScript
     public IEnumerator DestroyStartedGameTimerTest()
     {
         bool gameTimerStoppedEventCalled = false;
-        gameTimerEventChannel.Stopped.AddListener(() => gameTimerStoppedEventCalled = true);
+        GameTimerStopped.AddListener(() => gameTimerStoppedEventCalled = true);
 
         gameTimer.Begin(START_DURATION);
         yield return new WaitForEndOfFrame();
@@ -136,7 +155,7 @@ public class GameTimerTestScript
     public IEnumerator StartStartedTimerTest()
     {
         bool gameTimerBeganEventCalled = false;
-        gameTimerEventChannel.Began.AddListener(() => gameTimerBeganEventCalled = true);
+        GameTimerBegan.AddListener(() => gameTimerBeganEventCalled = true);
         gameTimer.Begin(START_DURATION);
 
         yield return new WaitForEndOfFrame();
@@ -154,8 +173,8 @@ public class GameTimerTestScript
         float previousRemainingTime = START_DURATION;
         float remainingTime = START_DURATION;
         bool hasTimerFinished = false;
-        gameTimerEventChannel.Timeout.AddListener(() => hasTimerFinished = true);
-        gameTimerEventChannel.RemainingTimeChanged.AddListener((float newRemainingTime) =>
+        GameTimerTimedOut.AddListener(() => hasTimerFinished = true);
+        GameTimerRemainingTimeChanged.AddListener((float newRemainingTime) =>
         {
             previousRemainingTime = remainingTime;
             remainingTime = newRemainingTime;
@@ -170,7 +189,7 @@ public class GameTimerTestScript
             }
         }
 
-        Assert.AreEqual(remainingTime, 0f, EQUALS_DELTA, "The remaining time when `GameTimer.Finished()` was emitted is not zero.");
+        Assert.AreEqual(remainingTime, 0f, EQUALS_DELTA, "The remaining time when `GameTimer.TimedOut()` was emitted is not zero.");
 
     }
 
@@ -180,8 +199,8 @@ public class GameTimerTestScript
         float remainingTime = 0.0f;
         float increasedAmount = 0.0f;
 
-        gameTimerEventChannel.DurationIncreased.AddListener((float newIncreasedDuration) => increasedAmount = newIncreasedDuration);
-        gameTimerEventChannel.RemainingTimeChanged.AddListener((float newRemainingTime) => remainingTime = newRemainingTime);
+        GameTimerDurationIncreased.AddListener((float newIncreasedDuration) => increasedAmount = newIncreasedDuration);
+        GameTimerRemainingTimeChanged.AddListener((float newRemainingTime) => remainingTime = newRemainingTime);
         gameTimer.Begin(START_DURATION);
         gameTimer.IncreaseDuration(EXTRA_DURATION);
         Assert.AreEqual(EXTRA_DURATION, increasedAmount, EQUALS_DELTA, "`GameTimer.DurationIncreased()` event did not report the correct increased duration.");
@@ -196,8 +215,8 @@ public class GameTimerTestScript
         float remainingTime = 0.0f;
         float decreasedAmount = 0.0f;
 
-        gameTimerEventChannel.DurationDecreased.AddListener((float newDecreasedDuration) => decreasedAmount = newDecreasedDuration);
-        gameTimerEventChannel.RemainingTimeChanged.AddListener((float newRemainingTime) => remainingTime = newRemainingTime);
+        GameTimerDurationDecreased.AddListener((float newDecreasedDuration) => decreasedAmount = newDecreasedDuration);
+        GameTimerRemainingTimeChanged.AddListener((float newRemainingTime) => remainingTime = newRemainingTime);
         gameTimer.Begin(START_DURATION);
         gameTimer.DecreaseDuration(EXTRA_DURATION);
         Assert.AreEqual(EXTRA_DURATION, decreasedAmount, EQUALS_DELTA, "`GameTimer.DurationDecreased()` event did not report the correct decreased duration.");
@@ -205,13 +224,13 @@ public class GameTimerTestScript
         yield return new WaitForEndOfFrame();
 
         bool hasTimerFinished = false;
-        gameTimerEventChannel.Timeout.AddListener(() => hasTimerFinished = true);
+        GameTimerTimedOut.AddListener(() => hasTimerFinished = true);
         gameTimer.DecreaseDuration(START_DURATION);
 
         yield return new WaitForEndOfFrame();
 
-        Assert.IsTrue(hasTimerFinished, "`GameTimer.Finished()` was not emitted after decreasing the entirety of the remaining time");
-        Assert.AreEqual(remainingTime, 0f, EQUALS_DELTA, "The remaining time when `GameTimer.Finished()` was emitted is not zero.");
+        Assert.IsTrue(hasTimerFinished, "`GameTimer.TimedOut()` was not emitted after decreasing the entirety of the remaining time");
+        Assert.AreEqual(0f, remainingTime, EQUALS_DELTA, "The remaining time when `GameTimer.TimedOut()` was emitted is not zero.");
 
 
     }
@@ -222,8 +241,8 @@ public class GameTimerTestScript
     {
         bool gameTimerDurationIncreasedEventCalled = false;
         bool gameTimerDurationDecreasedEventCalled = false;
-        gameTimerEventChannel.DurationIncreased.AddListener((float newIncreasedDuration) => gameTimerDurationIncreasedEventCalled = true);
-        gameTimerEventChannel.DurationDecreased.AddListener((float newDecreasedDuration) => gameTimerDurationDecreasedEventCalled = true);
+        GameTimerDurationIncreased.AddListener((float newIncreasedDuration) => gameTimerDurationIncreasedEventCalled = true);
+        GameTimerDurationDecreased.AddListener((float newDecreasedDuration) => gameTimerDurationDecreasedEventCalled = true);
 
         gameTimer.Begin(START_DURATION);
         gameTimer.Stop();

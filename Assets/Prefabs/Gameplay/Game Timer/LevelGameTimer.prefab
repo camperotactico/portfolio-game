@@ -61,4 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f42a1a017ba424d8a3153d36d296d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimerEventChannel: {fileID: 11400000, guid: 46c65fe79cbed46249b8d301236948bd, type: 2}
+  Began: {fileID: 11400000, guid: 0683afb17d3d446fcbe5998e1696c144, type: 2}
+  Stopped: {fileID: 11400000, guid: 4016c2d20608849be859729ba6b3477c, type: 2}
+  TimedOut: {fileID: 11400000, guid: 51bfba79487fd4e0c8197883062cb0e8, type: 2}
+  RemainingTimeChanged: {fileID: 11400000, guid: 81f2b9d51b9b0490a9a519843daf4aa7, type: 2}
+  DurationIncreased: {fileID: 11400000, guid: ad477ec62410c46cba4d17ff024ed701, type: 2}
+  DurationDecreased: {fileID: 11400000, guid: cd0da8f17ffc742239e43677c5fea002, type: 2}

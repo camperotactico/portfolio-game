@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remainingTimeText: {fileID: 4553436606193689268}
-  gameTimerEventChannel: {fileID: 11400000, guid: 46c65fe79cbed46249b8d301236948bd, type: 2}
+  GameTimerRemainingTimeChanged: {fileID: 11400000, guid: 81f2b9d51b9b0490a9a519843daf4aa7, type: 2}
 --- !u!1 &1041014616501845728
 GameObject:
   m_ObjectHideFlags: 0
