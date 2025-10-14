@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Scriptable_Objects.Data.Levels;
+using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {

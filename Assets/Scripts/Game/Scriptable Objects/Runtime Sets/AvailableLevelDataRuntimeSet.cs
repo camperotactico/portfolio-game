@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AvailableLevelDataRuntimeSet", menuName = "Scriptable Objects/Runtime Sets/Available Level Data Runtime Set")]
@@ -27,6 +28,11 @@ public class AvailableLevelDataRuntimeSet : ScriptableObject
         IsLoaded = false;
         availableLevelData.Clear();
         levelIDToLevelDatum.Clear();
+    }
+    
+    public void AddLevelData(LevelDataCollection newLevelDataCollection)
+    {
+        AddLevelData(newLevelDataCollection.levelData);
     }
 
     public void AddLevelData(ICollection<LevelDatum> newLevelData)

@@ -1,3 +1,4 @@
+using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelLoadRequestRuntimeSet", menuName = "Scriptable Objects/Runtime Sets/Level Load Request Runtime Set")]

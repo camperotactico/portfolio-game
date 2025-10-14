@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774409b5ffe284d5d84f896d78e22c17, type: 3}
   m_Name: LevelLoadRequestRuntimeSet
   m_EditorClassIdentifier: 
-  LevelDatum: {fileID: 11400000, guid: bb8a0829c696b4f968517e32c59a1ea0, type: 2}
+  levelDatum: {fileID: 11400000, guid: bb8a0829c696b4f968517e32c59a1ea0, type: 2}

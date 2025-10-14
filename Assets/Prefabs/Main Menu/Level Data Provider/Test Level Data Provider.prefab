@@ -47,4 +47,4 @@ MonoBehaviour:
   LevelDataReady: {fileID: 11400000, guid: ea24aaa31067047068d1d343a8eebc19, type: 2}
   LevelDataRequested: {fileID: 11400000, guid: d8c2d53dc064b479ab952f7fe2aebb43, type: 2}
   availableLevelDataRuntimeSet: {fileID: 11400000, guid: 519606072e0fc4924b89285aeaf5ade5, type: 2}
-  testLevelData: []
+  testLevelData: {fileID: 11400000, guid: 07cb8d2241d5aad0eb2ad7745bb4a15e, type: 2}

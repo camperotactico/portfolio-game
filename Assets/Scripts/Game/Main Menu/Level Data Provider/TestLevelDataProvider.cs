@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
 public class TestLevelDataProvider : BaseLevelDataProvider
 {
     [Header("Parameters")]
     [SerializeField]
-    private List<LevelDatum> testLevelData;
+    private LevelDataCollection testLevelData;
 
     public override IEnumerator LoadLevelData()
     {

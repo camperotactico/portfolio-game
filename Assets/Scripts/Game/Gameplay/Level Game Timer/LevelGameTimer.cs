@@ -1,3 +1,4 @@
+using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
 [RequireComponent(typeof(GameTimer))]

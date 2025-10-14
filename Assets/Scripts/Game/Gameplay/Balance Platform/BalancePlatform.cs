@@ -1,4 +1,5 @@
 using System;
+using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
 public class BalancePlatform : MonoBehaviour
