@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Local Level Data
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Default Local Group
+  m_GroupName: Local Level Data
   m_GUID: 70272a45e8f7e5f44a2d32c9c77889f7
   m_SerializeEntries:
-  - m_GUID: 07cb8d2241d5aad0eb2ad7745bb4a15e
-    m_Address: Assets/Scriptable Objects/Data/Level Data Collections/Level Data Collection
-      1.asset
+  - m_GUID: bb8a0829c696b4f968517e32c59a1ea0
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level 1/Level Datum 1.asset
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Levels
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 52e478f4c8bd8aee6bdff3c0d91e3a4c, type: 2}

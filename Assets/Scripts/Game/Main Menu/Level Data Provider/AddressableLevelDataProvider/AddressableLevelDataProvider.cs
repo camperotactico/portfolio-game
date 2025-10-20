@@ -1,5 +1,5 @@
 using System.Collections;
-using Game.Main_Menu.Level_Data_Provider.AddressableLevelDataProvider;
+using System.Collections.Generic;
 using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -9,23 +9,34 @@ public class AddressableLevelDataProvider : BaseLevelDataProvider
 {
     [Header("Parameters")]
     [SerializeField]
-    private AssetReferenceLevelDataCollection assetReferenceLevelDataCollection;
+    private List<string> levelsAddressableLabels = new List<string>() { "Levels"};
+
+    private AsyncOperationHandle<IList<LevelDatum>> _levelsLoadAsyncOperationHandle;
     public override IEnumerator LoadLevelData()
     {
-       AsyncOperationHandle<LevelDataCollection> asyncOperationHandle = assetReferenceLevelDataCollection.LoadAssetAsync();
-       if (!asyncOperationHandle.IsDone)
-       {
-           yield return asyncOperationHandle;
-       }
-       if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
-       { 
-           // TODO: Call Addressables.Release(asyncOperationHandle); on application quit.
-           availableLevelDataRuntimeSet.AddLevelData(asyncOperationHandle.Result);
-       }
-       else
-       {
-            Addressables.Release(asyncOperationHandle);
-       }
-       yield return null;
+        _levelsLoadAsyncOperationHandle =
+            Addressables.LoadAssetsAsync<LevelDatum>(levelsAddressableLabels, null, Addressables.MergeMode.Union);
+
+        if (!_levelsLoadAsyncOperationHandle.IsDone)
+        {
+            yield return _levelsLoadAsyncOperationHandle;
+        }
+
+        if (_levelsLoadAsyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            availableLevelDataRuntimeSet.AddLevelData(_levelsLoadAsyncOperationHandle.Result);
+            availableLevelDataRuntimeSet.ApplicationQuitting.AddListener(ReleaseLevelsLoadAsyncOperationHandle);
+        }
+        else
+        {
+            ReleaseLevelsLoadAsyncOperationHandle();
+        }
+
+        yield return null;
+    }
+
+    private void ReleaseLevelsLoadAsyncOperationHandle()
+    {
+        Addressables.Release(_levelsLoadAsyncOperationHandle);
     }
 }

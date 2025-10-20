@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Remote Level Data
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Remote Level Data
+  m_GUID: eb79a9c6dfb42669ea8c354755a29c86
+  m_SerializeEntries:
+  - m_GUID: 1572be5e5e58345c194d44777dddf000
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1577fe863d1ec4d6b9448f33dcb6bb81
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 245a658f81627422da93aa58ee61d368
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 6.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab6d89370a96d4e34a4304a5ba0f7cf7
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e68f8d6f1b42e457298a5b4b31d20468
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e83ae547773a14df084924b0e300b5e0
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 8.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f96a646a9cc144dce82710e6624eeed3
+    m_Address: Assets/Scriptable Objects/Data/Level Data/Level Datum 7.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Levels
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 52e478f4c8bd8aee6bdff3c0d91e3a4c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a47de08c6da965c6494cf02204ba24c2, type: 2}
+    - {fileID: 11400000, guid: 2ac48ae125dc85f048def8793ae7d488, type: 2}

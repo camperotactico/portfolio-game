@@ -7,7 +7,7 @@ public class TestLevelDataProvider : BaseLevelDataProvider
 {
     [Header("Parameters")]
     [SerializeField]
-    private LevelDataCollection testLevelData;
+    private List<LevelDatum> testLevelData;
 
     public override IEnumerator LoadLevelData()
     {

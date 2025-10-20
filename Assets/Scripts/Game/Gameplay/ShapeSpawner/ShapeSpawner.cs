@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Gameplay.Shape_Spawner;
 using Game.Scriptable_Objects.Data.Levels;
 using UnityEngine;
 
@@ -50,7 +51,7 @@ public class ShapeSpawner : MonoBehaviour
         {
             if (!shapeDatumToShapePool.ContainsKey(shapeSpawnDatum.ShapeDatum))
             {
-                shapeDatumToShapePool[shapeSpawnDatum.ShapeDatum] = new Pool<Shape>(shapeSpawnDatum.ShapeDatum.ShapePrefab, shapesParent, 32, 128);
+                shapeDatumToShapePool[shapeSpawnDatum.ShapeDatum] = new ShapePool(spawnedShapesRuntimeSet,shapeSpawnDatum.ShapeDatum.ShapePrefab, shapesParent, 32, 128);
             }
 
             if (!shapeDatumToShapeSpawnStrategy.ContainsKey(shapeSpawnDatum.ShapeDatum))
@@ -119,7 +120,7 @@ public class ShapeSpawner : MonoBehaviour
             {
                 for (int i = 0; i < pendingShapeDatumToCountToSpawn[shapeDatum]; i++)
                 {
-                    // Temporarely spawn shapes above the player.
+                    // Temporarily spawn shapes above the player.
                     Shape item = shapeDatumToShapePool[shapeDatum].RequestInstance();
                     Vector3 randomPosition = 2.5f * Random.insideUnitSphere;
                     randomPosition.z = 0f;

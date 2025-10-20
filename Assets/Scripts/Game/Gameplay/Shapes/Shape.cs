@@ -7,7 +7,7 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
     public ShapeDatum ShapeDatum { get => shapeDatum; }
 
 
-    [Header("Paramters")]
+    [Header("Parameters")]
     [SerializeField]
     private ShapeDatum shapeDatum;
 
@@ -17,18 +17,12 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
     [SerializeField]
     private Collider2D shapeCollider2D;
 
-    [Header("Runtime Sets")]
-    [SerializeField]
-    private SpawnedShapesRuntimeSet spawnedShapesRuntimeSet;
-
-
-    private Action<Shape> releaseToPoolAction;
+    private Action<Shape> _releaseToPoolAction;
 
 
     public void Initialise(Action<Shape> newReleaseToPoolAction)
     {
-        releaseToPoolAction = newReleaseToPoolAction;
-        spawnedShapesRuntimeSet.OnShapeSpawned(this);
+        _releaseToPoolAction = newReleaseToPoolAction;
     }
 
     public void ReleaseToPool()
@@ -36,12 +30,11 @@ public class Shape : MonoBehaviour, IPoolable<Shape>
         shapeRigidbody2D.linearVelocity = Vector2.zero;
         shapeRigidbody2D.angularVelocity = 0f;
 
-        releaseToPoolAction?.Invoke(this);
+        _releaseToPoolAction?.Invoke(this);
     }
 
     public void CleanUp()
     {
-        spawnedShapesRuntimeSet.OnShapeDestroyed(this);
     }
 }
 

@@ -13,13 +13,49 @@ MonoBehaviour:
   m_Name: ProfileDataSourceSettings
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.ProfileDataSourceSettings
   profileGroupTypes:
+  - m_GroupTypePrefix: Automatic
+    m_Variables:
+    - m_Suffix: BuildPath
+      m_Value: CCDBuildData/ManagedEnvironment/ManagedBucket/ManagedBadge
+    - m_Suffix: EnvironmentName
+      m_Value: production
+    - m_Suffix: LoadPath
+      m_Value: https://eb447566-ba44-46b6-a810-860592ca5e7f.client-api.unity3dusercontent.com/client_api/v1/environments/{CcdManager.EnvironmentName}/buckets/{CcdManager.BucketId}/release_by_badge/{CcdManager.Badge}/entry_by_path/content/?path=
   - m_GroupTypePrefix: Built-In
     m_Variables:
     - m_Suffix: BuildPath
       m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
     - m_Suffix: LoadPath
       m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
-  environments: []
+  - m_GroupTypePrefix: CCD.eb447566-ba44-46b6-a810-860592ca5e7f.2b614180-1fbe-41bf-9b9e-078824325a20.6f3404d9-e4d7-4d7f-8a26-424b0d6b769d.latest
+    m_Variables:
+    - m_Suffix: BuildPath
+      m_Value: CCDBuildData/2b614180-1fbe-41bf-9b9e-078824325a20/6f3404d9-e4d7-4d7f-8a26-424b0d6b769d/latest
+    - m_Suffix: CcdBadgeName
+      m_Value: latest
+    - m_Suffix: CcdBucketId
+      m_Value: 6f3404d9-e4d7-4d7f-8a26-424b0d6b769d
+    - m_Suffix: CcdBucketName
+      m_Value: Linux
+    - m_Suffix: Environmentid
+      m_Value: 2b614180-1fbe-41bf-9b9e-078824325a20
+    - m_Suffix: Environmentname
+      m_Value: production
+    - m_Suffix: LoadPath
+      m_Value: https://eb447566-ba44-46b6-a810-860592ca5e7f.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/6f3404d9-e4d7-4d7f-8a26-424b0d6b769d/release_by_badge/latest/entry_by_path/content/?path=
+    - m_Suffix: PromoteOnly
+      m_Value: False
+  environments:
+  - id: 2b614180-1fbe-41bf-9b9e-078824325a20
+    projectId: eb447566-ba44-46b6-a810-860592ca5e7f
+    projectGenesisId: eb447566-ba44-46b6-a810-860592ca5e7f
+    name: production
+    isDefault: 1
+  - id: 2d150e4d-cb26-4cf7-b96b-2419b593e8a5
+    projectId: eb447566-ba44-46b6-a810-860592ca5e7f
+    projectGenesisId: eb447566-ba44-46b6-a810-860592ca5e7f
+    name: balance-hero-production
+    isDefault: 0
   currentEnvironment:
     id: 
     projectId: 
